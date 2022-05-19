@@ -1,0 +1,21 @@
+.nav{
+    position:absolute;
+    overflow: hidden;
+}
+.nav  ul a{
+    color: white;
+    text-decoration: none;
+    -webkit-transition: all 0.3s ease;
+    transition: all 0.3s ease;
+ float: left;
+ text-align: center;
+ padding: 14px 16px;
+}
+.nav ul a:hover{
+    -webkit-transform: translateY(-5px);
+    transform: translateY(-5px);
+color: #00B4D8;
+}
+.nav ul a:active{
+    color:black
+}

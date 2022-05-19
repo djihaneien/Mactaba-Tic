@@ -1,0 +1,81 @@
+.Form{
+    margin-top: 5rem;
+   
+    
+}
+.Form input {
+    display:block;
+   border-width: thin;
+   border-color: lightsteelblue;
+    height: 2rem;
+    width: 40%;
+    margin: auto;
+    margin-bottom: 1rem;
+    padding: 0.2rem 1rem;
+    font-size: small;
+    color: gray;
+    -webkit-transition: all 0.1s ease-in-out;
+    transition: all 0.1s ease-in-out;
+  }
+  .Form select {
+    display: block;
+    border: none;
+    height: 2rem;
+    width: 40%;
+    margin: auto;
+    margin-bottom: 1rem;
+    padding: 0.2rem 1rem;
+    font-size: small;
+    color: gray;
+    -webkit-transition: all 0.1s ease-in-out;
+    transition: all 0.1s ease-in-out;
+  }
+  .Form input:focus {
+    outline: none;
+    border: none;
+  }
+  .Form input:hover {
+    outline: 0.5px solid #00B4D8;
+    -webkit-box-shadow: 2px 2px 9px -2px #00B4D8;
+            box-shadow: 2px 2px 9px -2px #00B4D8;
+  }
+  .Form select:focus {
+    outline: none;
+    border: none;
+  }
+  .Form select:hover {
+    outline: 0.5px solid #00B4D8;
+    -webkit-box-shadow: 2px 2px 9px -2px #00B4D8;
+            box-shadow: 2px 2px 9px -2px #00B4D8;
+  }
+  
+  .Form label {
+    display:block;
+    text-align: left;
+    width: 78%;
+    margin-left: 22rem;
+    font-size: small;
+    color: gray;
+    margin-bottom: 0.5rem;
+  }
+  
+  .Form #sub_butt {
+    width: 20%;
+    background: #00B4D8;
+    color: white;
+    border: none;
+    cursor: pointer;
+    padding: 0.5rem 1rem;
+    -webkit-transition: all 0.2s ease;
+    transition: all 0.2s ease;
+    margin-left: 35rem;
+    margin-top: 1rem;
+  }
+  
+  .Form #sub_butt:hover {
+    -webkit-box-shadow: 4px 3px 9px -1px gray;
+            box-shadow: 4px 3px 9px -1px gray;
+    -webkit-transform: translateY(-5px);
+            transform: translateY(-5px);
+  }
+ 

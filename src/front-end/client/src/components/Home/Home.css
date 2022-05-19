@@ -1,0 +1,59 @@
+body{
+    background: -webkit-gradient(linear, left top, right bottom, from(rgba(255, 255, 255, 0.7)), to(rgba(236, 236, 236, 0.4)));
+    background: linear-gradient(to right bottom, rgba(255, 255, 255, 0.7), rgba(236, 236, 236, 0.4));
+    height: 100%;
+    width: 100%;
+    
+  
+}
+.content{
+    position: relative;
+    
+}
+#wel-id {
+ 
+ height:2100%;  
+width: 100%;
+-o-object-fit: cover;
+   object-fit: cover;
+}
+
+   #btn{
+       
+     justify-content: center;
+        width: 20%;
+        background: #00B4D8;
+        color: white;
+        border: none;
+        cursor: pointer;
+        padding: 0.5rem 1rem;
+        -webkit-transition: all 0.2s ease;
+        transition: all 0.2s ease;
+        margin-left: 35rem;
+        position: absolute;
+        top:50%;
+        left:1%
+       
+      }
+      #btn a{
+          color: white;
+          text-decoration: none;
+      }
+      
+       #btn:hover {
+        -webkit-box-shadow: 4px 3px 9px -1px gray;
+                box-shadow: 4px 3px 9px -1px gray;
+        -webkit-transform: translateY(-5px);
+                transform: translateY(-5px);
+      }
+      
+   h1{
+    position: absolute;
+    top:30%;
+    left:35%;
+    color: white;
+    padding:auto;
+    
+    
+   
+   }
