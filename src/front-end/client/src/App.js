@@ -7,6 +7,9 @@ import About from './components/About';
 import Nav from './components/Nav';
 import'./components/Nav.css';
 import Form from './components/Comptes/Form';
+import Topbar from "./components/topbar/Topbar";
+import Sidebar from "./components/sidebar/Sidebar";
+import Ouvrages from "./pages/Ouvrages";
 
 
 
@@ -20,10 +23,16 @@ class App extends Component {
 
   
   return (
+    <Topbar/>,
+    <div className="container">
+      <Sidebar/>
+      <Ouvrages/>
+
+    </div>,
     <BrowserRouter>
     <div className="App" id='App'>
     
-     
+  
     <Routes>
       <Route path="/" element={<Home/>}/>;
       <Route path="/About" element={<About/>}/>;
