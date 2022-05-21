@@ -1,7 +1,6 @@
 import React from 'react'
 import "./topbar.css"
 import { Link } from "react-router-dom";
-import Addouvrages from '../../Addouvrage/Addouvrages';
 
 export default function Topbar() {
   return (
@@ -29,9 +28,9 @@ export default function Topbar() {
           </div>
         </div>
         <div className="topRight">
-          
-          <button type="submit" className="bttn"> <a href="/Addouvrages">Add</a> </button>
-         
+          <Link to="/Addouvrage">
+          <button type="submit" className="bttn"> Add</button>
+          </Link>
           <img src="./Avatar.png" alt=""/>
         </div>
       </div>

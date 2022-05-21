@@ -8,6 +8,7 @@ import Nav from './components/Nav';
 import'./components/Nav.css';
 import Form from './components/Comptes/Form';
 import Ouvrages from "./components/Ouvragess/Ouvrages";
+import Addouvrages from './components/Addouvrage/Addouvrages';
 
 
 
@@ -32,6 +33,7 @@ class App extends Component {
       <Route path="/Comptes" element={<Form/>}/>;
       <Route path="/Login" element={<Login/>}/>;
       <Route path="/Ouvrages" element={<Ouvrages/>}/>;
+      <Route path="/Addouvrages" element={<Addouvrages/>}/>;
       </Routes>
     
       
