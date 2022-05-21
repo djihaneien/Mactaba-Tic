@@ -38,7 +38,7 @@ export default function Leschamps() {
            <label>Description</label>
            <input placeholder="description " type="text" id="input"></input>
            <label>Choisir une couverture</label>
-           <input placeholder="cover " type="text" id="input"></input>
+           <input type="file" id="img" name="img" accept="image/*" />
         </div>
     </div>
     
