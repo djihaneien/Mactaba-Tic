@@ -10,9 +10,9 @@
     padding: 30px;
     border-radius: 10px;
     cursor: pointer;
-    -webkit-box-shadow: 0px 0px 15px -10px #03045E;;
-    box-shadow: 0px 0px 15px -10px #03045E;;
-    
+    -webkit-box-shadow: 0px 0px 15px -10px #03045E;
+    box-shadow: 0px 0px 15px -10px #03045E;
+    height: 150px;
   }
   
   .ouvrageTitle{

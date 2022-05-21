@@ -7,9 +7,7 @@ import About from './components/About';
 import Nav from './components/Nav';
 import'./components/Nav.css';
 import Form from './components/Comptes/Form';
-import Topbar from "./components/topbar/Topbar";
-import Sidebar from "./components/sidebar/Sidebar";
-import Ouvrages from "./pages/Ouvrages";
+import Ouvrages from "./components/Ouvragess/Ouvrages";
 
 
 
@@ -23,21 +21,17 @@ class App extends Component {
 
   
   return (
-    <Topbar/>,
-    <div className="container">
-      <Sidebar/>
-      <Ouvrages/>
-
-    </div>,
+    
     <BrowserRouter>
     <div className="App" id='App'>
-    
+   
   
     <Routes>
       <Route path="/" element={<Home/>}/>;
       <Route path="/About" element={<About/>}/>;
       <Route path="/Comptes" element={<Form/>}/>;
       <Route path="/Login" element={<Login/>}/>;
+      <Route path="/Ouvrages" element={<Ouvrages/>}/>;
       </Routes>
     
       

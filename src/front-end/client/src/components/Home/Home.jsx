@@ -14,6 +14,7 @@ const Home =() =>{
 
 <h1>Welcome to Maktaba-tic</h1>
 <button id="btn"><a href="/Login">Log In</a>  </button>
+<button id="btnn"><a href="/Ouvrages">ouvrages</a>  </button>
 </div>
     )
 }
