@@ -37,7 +37,7 @@ export default function Leschamps() {
         <div className="forthline">
            <label>Description</label>
            <input placeholder="description " type="text" id="input"></input>
-           <label>Choisir une couverture</label>
+           <label>Choisirr une couverture</label>
            <input type="file" id="img" name="img" accept="image/*" />
         </div>
     </div>
