@@ -1,10 +1,6 @@
 const mongoose = require('mongoose')
 
 const authorSchema = new mongoose.Schema({
-    idAuthor:{
-        type:Number,
-        require: true, 
-    },
     firstName: {
         type:String,
         require: true,  
@@ -17,6 +13,10 @@ const authorSchema = new mongoose.Schema({
         type:String, 
         require: true,
     },
+    projects:[{
+        type: mongoose.Types.ObjectId,
+        ref : "project"
+    }]
     
 })
 

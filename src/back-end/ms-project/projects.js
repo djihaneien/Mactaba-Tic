@@ -21,7 +21,7 @@ app.get('/',(req,res)=>{
 })
 
 
-// *********LISTING BOOKS*********
+// *********LISTING PROJECTS*********
 app.get('/projects',(req,res)=>{
     // return promise
     Project.find().then((projects)=>{
@@ -29,7 +29,7 @@ app.get('/projects',(req,res)=>{
     })
 })
 
-// *********GET BOOK BY ID *********
+// *********GET PROJECT BY ID *********
 app.get('/projects/:id',(req,res)=>{
     Project.findById(req.params.id).then((project)=>{
          res.json(project)
@@ -45,50 +45,97 @@ app.get('/projects/:id',(req,res)=>{
 //     })
 // })
 
-//*********** CREATION BOOK****************
+//*********** CREATION PROJECT / SUPERVISOR/AUTHOR****************
 app.post('/addProject',async(req,res)=>{
     var newProject = {
-        idProject: req.body.idProject,
         theme: req.body.theme, 
         year: req.body.year,
         fileName: req.body.fileName,
         language: req.body.language, 
+        authors : req.body.authors,
         projectType: req.body.projectType,
+        
     }
     console.log(req.body)
-
+    
     var project = await new Project(newProject).save().then(()=>{
-        console.log('New book created')
+        console.log('New project created')
     })
+
+    // await Author.updateMany({ '_id': project.authors }, 
+    // { $push: { projects: project._id } });
     
     return res.json(project)
     
 })
 
-//*********** MODIFIER BOOK****************
+app.post('/addSupervisor',async(req,res)=>{
+    var newSupervisor = {
+        firstNma: req.body.firstName,
+        lastName: req.body.lastName, 
+        email: req.body.email         
+    }
+    console.log(req.body)
+
+    var supervisor = await new Supervisor(newSupervisor).save().then(()=>{
+        console.log('New supervisor created')
+    })
+ 
+    return res.json(supervisor)
+    
+})
+
+app.post('/addAuthor',async(req,res)=>{
+    var newAuthor= {
+        firstName: req.body.firstName,
+        lastName: req.body.lastName, 
+        email: req.body.email         
+    }
+    console.log(req.body)
+
+    var author = await new Author(newAuthor).save().then(()=>{
+        console.log('New author created')
+    })
+ 
+    return res.json(author)
+    
+})
+
+//*********** MODIFIER PROJECT ****************
 app.put('/setProject/:id',(req,res)=>{
-    var isbn= req.body.isbn
-    var title = req.body.title 
-    var author =req.body.author
-    var  publisher= req.body.publisher
-    var category= req.body.category
-    var quantity = req.body.quantity
+    var theme = req.body.theme
+    var year =req.body.year
+    var fileName= req.body. fileName
+    var language= req.body.language
+    var projectType = req.body.projectType
     Book.findByIdAndUpdate(req.params.id,{
-        isbn:isbn,
-        title:title,
-        author:author,
-        publisher: publisher,
-        category:category,
-        quantity:quantity
+        idProject:idProject,
+        theme:theme,
+        year:year,
+        fileName:fileName,
+        language:language,
+        projectType:projectType
     }).then((book)=>{
         res.json(book)
     })    
 })
 
-// ****************DELETE BOOK************
+// ****************DELETE PROJECT / SUPERVISOR / AUTHOR************
 app.delete('/deleteProject/:id',(req,res)=>{
-    Book.findByIdAndRemove(req.params.id).then((project)=>{
+    Project.findByIdAndRemove(req.params.id).then((project)=>{
         res.json(project)
+    })
+})
+
+app.delete('/deleteSupervisor/:id',(req,res)=>{
+    Supervisor.findByIdAndRemove(req.params.id).then((supervisor)=>{
+        res.json(supervisor)
+    })
+})
+
+app.delete('/deleteAuthor/:id',(req,res)=>{
+    Author.findByIdAndRemove(req.params.id).then((author)=>{
+        res.json(author)
     })
 })
 

@@ -1,10 +1,6 @@
 const mongoose = require('mongoose')
 
 const projectSchema = new mongoose.Schema({
-    idProject:{
-        type:String,
-        require: true, 
-    },
     theme: {
         type:String,
         require: true,  
@@ -18,6 +14,14 @@ const projectSchema = new mongoose.Schema({
      language:{
         type: String, 
        },
+    authors: [{
+        type: mongoose.Types.ObjectId,
+        ref : "author"
+    }], 
+    supervisors:[{
+        type: mongoose.Types.ObjectId,
+        ref : "supervisor"
+    }],
      projectType: {
         type: String,
         enum: ['2CPI','1CS','2CS','Master','Ingéniorat'],
