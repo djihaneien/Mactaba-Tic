@@ -32,3 +32,17 @@
   margin-top:15px;
   margin-right:100px;
 }
+.bttn{
+    width: 80%;
+    background: #00B4D8;
+    color: white;
+    border: none;
+    cursor: pointer;
+    padding: 0.5rem 1rem;
+    -webkit-transition: all 0.2s ease;
+    transition: all 0.2s ease;
+    margin-right:50px;
+}
+.topRight{
+  display:flex;
+}

@@ -1,5 +1,7 @@
 import React from 'react'
 import "./topbar.css"
+import { Link } from "react-router-dom";
+import Addouvrages from '../../Addouvrage/Addouvrages';
 
 export default function Topbar() {
   return (
@@ -27,7 +29,10 @@ export default function Topbar() {
           </div>
         </div>
         <div className="topRight">
-        <img src="./Avatar.png" alt=""/>
+          
+          <button type="submit" className="bttn"> <a href="/Addouvrages">Add</a> </button>
+         
+          <img src="./Avatar.png" alt=""/>
         </div>
       </div>
     </div>

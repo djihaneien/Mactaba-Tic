@@ -46,6 +46,36 @@ width: 100%;
         -webkit-transform: translateY(-5px);
                 transform: translateY(-5px);
       }
+
+      #btnn{
+       
+        justify-content: center;
+           width: 20%;
+           background: #00B4D8;
+           color: white;
+           border: none;
+           cursor: pointer;
+           padding: 0.5rem 1rem;
+           -webkit-transition: all 0.2s ease;
+           transition: all 0.2s ease;
+           margin-left: 35rem;
+           margin-top: 100px;
+           position: absolute;
+           top:50%;
+           left:1%
+          
+         }
+         #btnn a{
+             color: white;
+             text-decoration: none;
+         }
+         
+          #btnn:hover {
+           -webkit-box-shadow: 4px 3px 9px -1px gray;
+                   box-shadow: 4px 3px 9px -1px gray;
+           -webkit-transform: translateY(-5px);
+                   transform: translateY(-5px);
+         }
       
    h1{
     position: absolute;

@@ -1,0 +1,37 @@
+.leschamps{
+  display:block;
+}
+.leschamps>div{
+  margin-top: 50px;
+}
+.firstline,.secondline,.thirdline,.forthline{
+  display:flex;
+}
+ input {
+  border: none;
+  height: 2rem;
+  width: 70%;
+  margin: auto;
+  margin-bottom: 1rem;
+  padding: 0.2rem 1rem;
+  font-size: small;
+  background-color: rgb(244, 243, 243);
+  -webkit-transition: all 0.1s ease-in-out;
+  transition: all 0.1s ease-in-out;
+}
+ input:focus {
+  outline: none;
+  border: none;
+}
+
+ input:hover {
+  outline: 0.5px solid #00B4D8;
+  -webkit-box-shadow: 2px 2px 9px -2px #00B4D8;
+          box-shadow: 2px 2px 9px -2px #00B4D8;
+}
+label {
+  display: inline-block;
+  font-size: small;
+  color: gray;
+  margin-bottom: 0.5rem;
+}

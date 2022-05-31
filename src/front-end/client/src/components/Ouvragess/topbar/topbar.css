@@ -1,0 +1,48 @@
+.topbar {
+    width:1215px;
+    height: 80px;
+    background-color: rgb(255, 255, 255);
+    position: sticky;
+    margin-left: 15px;
+    border-radius: 10px;
+    margin-top: 20px;
+    -webkit-box-shadow: 0px 0px 15px -10px #3e4243;
+    box-shadow: 0px 0px 15px -10px #292c2c;
+  }
+  
+  .topbarWrapper {
+    height: 100%;
+    padding: 0px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-radius: 10px;
+  
+  }
+  .topLeft>img{
+      width:250px;
+      margin-top:20px;
+      margin-left:-40px;
+  }
+  .topRight>img{
+   width:40px;
+   
+}
+.search{
+  margin-top:15px;
+  margin-right:100px;
+}
+.bttn{
+    width: 80%;
+    background: #00B4D8;
+    color: white;
+    border: none;
+    cursor: pointer;
+    padding: 0.5rem 1rem;
+    -webkit-transition: all 0.2s ease;
+    transition: all 0.2s ease;
+    margin-right:50px;
+}
+.topRight{
+  display:flex;
+}
