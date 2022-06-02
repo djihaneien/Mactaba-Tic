@@ -1,5 +1,6 @@
 import React from 'react'
-import "./leschamps.css" 
+import "./leschamps.css"
+
 
 export default function Leschamps() {
   return (

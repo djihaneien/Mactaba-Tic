@@ -1,7 +1,11 @@
 const mongoose = require('mongoose')
 
 const bookSchema = new mongoose.Schema({
-    isbn:{
+    isbn10:{
+        type:String,
+        require: true, 
+    },
+    isbn13:{
         type:String,
         require: true, 
     },
@@ -9,11 +13,17 @@ const bookSchema = new mongoose.Schema({
         type:String,
         require: true,  
     },
-    author:{
+    authors:[{
         type:String,
-    },
+    }],
     publisher:{
         type:String, 
+    },
+    publishedDate:{
+        type:Date, 
+    },
+    pages:{
+       type : Number,
     },
     category:{
         type: String, 
