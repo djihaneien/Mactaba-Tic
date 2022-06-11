@@ -14,8 +14,8 @@ async function connectMongoose() {
 	await mongoose.connect("mongodb+srv://mactaba-tic:5FG21vkGOzJVioXn@ms-compte.bjwd2o7.mongodb.net/?retryWrites=true&w=majority", () =>{
 		console.log("ms-compte database is concted")
        })
-	require("./reader")
-	require("./librarian")
+	require("./models/reader")
+	require("./models/librarian")
 	Reader = mongoose.model("Reader")
 	Librarian=mongoose.model("Librarian")
 	                    

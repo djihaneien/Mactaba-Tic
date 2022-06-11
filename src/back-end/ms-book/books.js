@@ -2,6 +2,7 @@ const express = require('express');
 const app = express(); 
 const Book = require('./book')
 const CopyBook = require('./copyBook')
+var amqp = require('amqplib/callback_api')
 
 const mongoose = require('mongoose')
 mongoose.connect('mongodb+srv://mactaba-tic:HpHW0252rEo8k8TT@ms-book.wizna.mongodb.net/ms-book?retryWrites=true&w=majority',

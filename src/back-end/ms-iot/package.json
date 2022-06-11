@@ -1,0 +1,6 @@
+{
+  "dependencies": {
+    "amqplib": "^0.10.0",
+    "serialport": "^10.4.0"
+  }
+}
