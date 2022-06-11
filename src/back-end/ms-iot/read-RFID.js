@@ -5,7 +5,6 @@ var index = fs.readFileSync( 'index.html');
 
 var SerialPort = require('serialport');
 const parsers = SerialPort.parsers;
-
 const parser = new parsers.Readline({
    delimiter: '\r\n'
 });

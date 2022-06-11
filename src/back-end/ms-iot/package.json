@@ -1,6 +1,7 @@
 {
   "dependencies": {
     "amqplib": "^0.10.0",
-    "serialport": "^10.4.0"
+    "serialport": "^9.2.8",
+    "socket.io": "^2.4.1"
   }
 }
