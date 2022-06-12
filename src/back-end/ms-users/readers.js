@@ -4,31 +4,28 @@ const bodyParser = require("body-parser");
 
 app.use(bodyParser.urlencoded({extended: true})); 
 app.use(bodyParser.json()); 
-
+const Reader=require("./reader")
 // Load Mongoose
 const mongoose = require("mongoose");
+const { home } = require("nodemon/lib/utils");
 
-// Global User Object which will be the instance of MongoDB document
-var User;
-async function connectMongoose() {
-	await mongoose.connect("mongodb+srv://mactaba-tic:5FG21vkGOzJVioXn@ms-compte.bjwd2o7.mongodb.net/?retryWrites=true&w=majority", () =>{
+
+	// mongoose.connect("mongodb+srv://mactaba-tic:5FG21vkGOzJVioXn@ms-compte.bjwd2o7.mongodb.net/?retryWrites=true&w=majority", () =>{
+	//	console.log("ms-compte database is concted")
+     //  })
+  
+	   
+	 mongoose.connect("localhost:27017/compte", () =>{
 		console.log("ms-compte database is concted")
        })
-	require("./reader")
+
+
 	require("./librarian")
-	Reader = mongoose.model("Reader")
 	Librarian=mongoose.model("Librarian")
 	                    
-}
 
 
 
-// Load initial modules
-async function initialLoad() {
-	await connectMongoose();
-}
-
-initialLoad()
 
 
 app.get("/", (req, res) => {
@@ -69,6 +66,7 @@ app.post("/lib", async (req, res) => {
 		"birthday": req.body.birthday,
 		"creationDate": req.body.creationDate,
 		"endDate":req.body.endDate,
+
 	}
 	
 	// Create new Lib instance..
@@ -108,13 +106,19 @@ app.get("/connect",async (req, res) => {
      var email=req.body.email;
 	 var password= req.body.password;
 
-	Librarian.find({email:email,password:password}).then((Reader) => {
-		res.send(Reader)
-	}).catch( () => {
-		res.sendStatus(404)
-	})
+	Librarian.find({email:email}).then((Reader) => {
+		if(!Reader){
+		return res.status(401).json({
+			message: "User not found",
 })
+		}
+      const passValid=Librarian.findOne({password:pass})
+		if(passValid) {
+			res.send("user found")
 
+		}
+	})
+	});
 
 // Delete reader by name 
 app.delete("/readers/:uid", async (req, res) => {

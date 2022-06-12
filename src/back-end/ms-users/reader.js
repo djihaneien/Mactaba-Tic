@@ -3,7 +3,7 @@ const mongoose = require('mongoose');
 
 // User Model
 
-mongoose.model("Reader", {
+const readerSchema = new mongoose.Schema({
 	firstName: {
 		type: String,
 		required: true
@@ -34,3 +34,5 @@ mongoose.model("Reader", {
 	}
 
 })
+
+module.exports=mongoose.model("Reader",readerSchema);
