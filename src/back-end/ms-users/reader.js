@@ -24,9 +24,9 @@ const readerSchema = new mongoose.Schema({
 		type: Date,
 		required:true
 	},
-	creationDate: {
-		type: Date,
-		required: true
+	Niveau:{
+		type:String,
+		required:true
 	},
 	Rfid:{
 		type:Number,

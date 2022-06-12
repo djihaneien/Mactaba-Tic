@@ -1,9 +1,13 @@
 const express  = require("express");
 const app = express()
 const bodyParser = require("body-parser");
+const cors = require("cors");
+
+app.use(cors());
 
 app.use(bodyParser.urlencoded({extended: true})); 
 app.use(bodyParser.json()); 
+
 const Reader=require("./reader")
 // Load Mongoose
 const mongoose = require("mongoose");
@@ -15,7 +19,7 @@ const { home } = require("nodemon/lib/utils");
      //  })
   
 	   
-	 mongoose.connect("localhost:27017/compte", () =>{
+	 mongoose.connect("mongodb://localhost:27017/compte", () =>{
 		console.log("ms-compte database is concted")
        })
 
@@ -102,21 +106,26 @@ app.get("/librarians",async (req, res) => {
 	})
 })
 //Authentication Librarian
-app.get("/connect",async (req, res) => {
+app.post("/connect",async (req, res) => {
      var email=req.body.email;
 	 var password= req.body.password;
+	 console.log(email);
 
-	Librarian.find({email:email}).then((Reader) => {
-		if(!Reader){
+	Librarian.findOne({email:email}).then((librarians) => {
+		console.log(librarians)
+		if(!librarians){
 		return res.status(401).json({
-			message: "User not found",
-})
+			message: "User not found", 
+              })
 		}
-      const passValid=Librarian.findOne({password:pass})
-		if(passValid) {
-			res.send("user found")
+      Librarian.findOne({password:password}).then((librarians)=>{
+		console.log(librarians)
+		if(librarians) {
+			res.send({message:"user found"})
+	  }
+	  
 
-		}
+		})
 	})
 	});
 
