@@ -1,9 +1,10 @@
 .nav{
     position:absolute;
     overflow: hidden;
+    margin-left: 30%;
 }
 .nav  ul a{
-    color: white;
+ color: white;
     text-decoration: none;
     -webkit-transition: all 0.3s ease;
     transition: all 0.3s ease;

@@ -10,7 +10,7 @@ const Login=() =>{
   
   const [emailval,setemailval]= useState("");
   const [passval,setpassval]= useState("");
-  const navigate = useNavigate()
+  const navigate = useNavigate();
   
   
  
@@ -21,10 +21,10 @@ const Login=() =>{
     email: emailval,
     password: passval
     }).then(res=>{
-   //   alert(res.data.message);
        // setLoginUser(res.data.user)
         navigate("/Ouvrages");
       })
+     
   }
 
     return(
@@ -42,10 +42,10 @@ const Login=() =>{
                       
                     
                           <form >
-                        <label htmlFor="emil1">Email</label>
+                            <label htmlFor="emil1">Email</label>
                             <input placeholder="Enter your email..." type="email" name="email" value={emailval} 
                             onChange={(e)=>{setemailval(e.target.value)}} id="emil1"/>
-                        <label htmlFor="pwd1">Password</label>
+                            <label htmlFor="pwd1">Password</label>
                             <input placeholder="Enter password" name="password" type="password"value={passval} onChange={(e)=>{setpassval(e.target.value)}}
                              id="pwd1" />
                             <Link className='link' to={"/Comptes"} >Forgot Password?</Link>
