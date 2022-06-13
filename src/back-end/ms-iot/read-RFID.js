@@ -34,13 +34,7 @@ io.on('connection', function(socket) {
 
 parser.on('data', function(data) {
     console.log('Received data from port: ' + data);
-
     io.emit('data', data);
     
 });
-
 app.listen(3001);
-
-
-
-
