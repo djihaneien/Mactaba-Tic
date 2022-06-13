@@ -38,12 +38,12 @@ app.get("/", (req, res) => {
 // Create new reader
 app.post("/reader", async (req, res) => {
 	const newReader = {
-		"firstName":req.body.firstName,
-		"lastName": req.body.lastName,
+		"Nom":req.body.Nom,
+		"Prenom": req.body.Prenom,
 		"email":req.body.email,
 		"password": req.body.password,
 		"birthday": req.body.birthday,
-		"creationDate": req.body.creationDate,
+		"Niveau": req.body.niveau,
 		"Rfid":req.body.Rfid,
 	}
 	
