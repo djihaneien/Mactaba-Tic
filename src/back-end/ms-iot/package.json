@@ -1,4 +1,5 @@
 {
+<<<<<<< HEAD
     "name": "basic-socket",
     "version": "0.0.1",
     "description": "Communication between Arduino and HTML/JavaScript",
@@ -7,4 +8,11 @@
         "serialport": "^9.2.8",
         "socket.io": "^2.0.4"
     }
+=======
+  "dependencies": {
+    "amqplib": "^0.10.0",
+    "serialport": "^9.2.8",
+    "socket.io": "^2.4.1"
+  }
+>>>>>>> 1cf51db8f0a1aa7597891593158a2b84943476dc
 }

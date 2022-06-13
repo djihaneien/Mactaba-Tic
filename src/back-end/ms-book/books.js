@@ -2,6 +2,7 @@ const express = require('express');
 const app = express(); 
 const Book = require('./book')
 const CopyBook = require('./copyBook')
+var amqp = require('amqplib/callback_api')
 
 const mongoose = require('mongoose')
 mongoose.connect('mongodb+srv://mactaba-tic:HpHW0252rEo8k8TT@ms-book.wizna.mongodb.net/ms-book?retryWrites=true&w=majority',
@@ -66,6 +67,22 @@ app.post('/addBook',async(req,res)=>{
     
 })
 
+app.post('/addCopyBook',async(req,res)=>{
+    var newCopyBook = {
+        rifd: req.body.rfid,
+        book : req.body.book,
+       
+    }
+    console.log(req.body)
+
+    var copyBook = await new CopyBook(newCopyBook ).save().then(()=>{
+        console.log('New copy book created')
+    })
+    
+    return res.json(copyBook)
+    
+})
+
 //*********** MODIFIER BOOK****************
 app.put('/setBook/:id',(req,res)=>{
     var isbn= req.body.isbn
@@ -92,6 +109,7 @@ app.delete('/deleteBook/:id',(req,res)=>{
         res.json(book)
     })
 })
+
 
 app.listen(8090,()=>{
     console.log('Ms-Book is runnig on 8090')
