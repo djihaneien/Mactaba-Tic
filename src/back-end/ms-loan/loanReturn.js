@@ -18,7 +18,7 @@ const loanSchema = new mongoose.Schema({
     state:{
         type: String, 
         enum: ['Retard'],
-        default: 'Retard'
+        default: loan
        },
      
 })

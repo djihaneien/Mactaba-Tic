@@ -1,35 +1,45 @@
 const express  = require("express");
 const app = express()
 const bodyParser = require("body-parser");
+<<<<<<< HEAD
 var amqp = require('amqplib/callback_api')
+=======
+const cors = require("cors");
+
+app.use(cors());
+>>>>>>> 86e4686a8be6f3deb4d1237d09bcba39ca455390
 
 app.use(bodyParser.urlencoded({extended: true})); 
 app.use(bodyParser.json()); 
 
+const Reader=require("./reader")
 // Load Mongoose
 const mongoose = require("mongoose");
+const { home } = require("nodemon/lib/utils");
 
-// Global User Object which will be the instance of MongoDB document
-var User;
-async function connectMongoose() {
-	await mongoose.connect("mongodb+srv://mactaba-tic:5FG21vkGOzJVioXn@ms-compte.bjwd2o7.mongodb.net/?retryWrites=true&w=majority", () =>{
+
+	// mongoose.connect("mongodb+srv://mactaba-tic:5FG21vkGOzJVioXn@ms-compte.bjwd2o7.mongodb.net/?retryWrites=true&w=majority", () =>{
+	//	console.log("ms-compte database is concted")
+     //  })
+  
+	   
+	 mongoose.connect("mongodb://localhost:27017/compte", () =>{
 		console.log("ms-compte database is concted")
        })
+<<<<<<< HEAD
 	require("./models/reader")
 	require("./models/librarian")
 	Reader = mongoose.model("Reader")
+=======
+
+
+	require("./librarian")
+>>>>>>> 86e4686a8be6f3deb4d1237d09bcba39ca455390
 	Librarian=mongoose.model("Librarian")
 	                    
-}
 
 
 
-// Load initial modules
-async function initialLoad() {
-	await connectMongoose();
-}
-
-initialLoad()
 
 
 app.get("/", (req, res) => {
@@ -38,12 +48,12 @@ app.get("/", (req, res) => {
 // Create new reader
 app.post("/reader", async (req, res) => {
 	const newReader = {
-		"firstName":req.body.firstName,
-		"lastName": req.body.lastName,
+		"Nom":req.body.Nom,
+		"Prenom": req.body.Prenom,
 		"email":req.body.email,
 		"password": req.body.password,
 		"birthday": req.body.birthday,
-		"creationDate": req.body.creationDate,
+		"Niveau": req.body.niveau,
 		"Rfid":req.body.Rfid,
 	}
 	
@@ -70,6 +80,7 @@ app.post("/lib", async (req, res) => {
 		"birthday": req.body.birthday,
 		"creationDate": req.body.creationDate,
 		"endDate":req.body.endDate,
+
 	}
 	
 	// Create new Lib instance..
@@ -105,17 +116,28 @@ app.get("/librarians",async (req, res) => {
 	})
 })
 //Authentication Librarian
-app.get("/connect",async (req, res) => {
+app.post("/connect",async (req, res) => {
      var email=req.body.email;
 	 var password= req.body.password;
+	 console.log(email);
 
-	Librarian.find({email:email,password:password}).then((Reader) => {
-		res.send(Reader)
-	}).catch( () => {
-		res.sendStatus(404)
+	Librarian.findOne({email:email}).then((librarians) => {
+		console.log(librarians)
+		if(!librarians){
+		return res.status(401).json({
+			message: "User not found", 
+              })
+		}
+      Librarian.findOne({password:password}).then((librarians)=>{
+		console.log(librarians)
+		if(librarians) {
+			res.send({message:"user found"})
+	  }
+	  
+
+		})
 	})
-})
-
+	});
 
 // Delete reader by name 
 app.delete("/readers/:uid", async (req, res) => {

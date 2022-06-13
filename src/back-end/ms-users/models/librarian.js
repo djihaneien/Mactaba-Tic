@@ -30,7 +30,7 @@ mongoose.model("Librarian", {
 	},
     endDate: {
 		type: Date,
-		required: true
+		
 	}
 
 })
