@@ -5,10 +5,10 @@ const bookCopySchema = new mongoose.Schema({
         type:String,
         require: true, 
     },
-    book:[{
+    book:{
         type: mongoose.Types.ObjectId,
         ref : "book"
-    }]
+    }
     
 })
 

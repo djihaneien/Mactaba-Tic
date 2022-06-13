@@ -2,6 +2,7 @@ import React from 'react';
 import './Form.css';
 import { useState } from "react";
 import Axios from "axios";
+import {io} from 'socket.io-client'
 const Register=() =>{
     const [nom, setNom] = useState("");
     const [prenom, setPrenom] = useState("");
@@ -10,6 +11,22 @@ const Register=() =>{
     const [date, setDate] = useState("");
     const [niveau, setNiveau] = useState("");
     const [rfid, setRfid] = useState("");
+  
+
+  
+  React.useEffect(()=>{
+    const socket = io.connect('http://localhost:5000')
+    //socket.on('connect', ()=>console.log("fvgrfg"))
+   // socket.on('connect_error', ()=>{
+      //setTimeout(()=>socket.connect(),5000)
+   // })
+   socket.on('data',function(data) {
+    console.log(data)
+               setRfid(data)
+})
+
+ 
+ },[])
     const AddReader = () => {
         Axios.post("http://localhost:8092/reader", {
           Nom: nom,
@@ -53,17 +70,16 @@ const Register=() =>{
             setPass(event.target.value);
           }}/>
 
-                <label>RFID</label>
-                    <input type="number"  onChange={(event) => {
-            setRfid(event.target.value);
-          }}/>
+                  <div className="App">
+                        ffff  {rfid}
+                             </div>
                 <label>Niveau</label>
                     <select  onChange={(event) => {
             setNiveau(event.target.value);
           }}>
                         <option value="Master">Master</option>
                         <option value="Licence">Licence</option>
-                        <option selected value="Doctorat">Doctorat</option>
+                        <option  value="Doctorat">Doctorat</option>
                         
                     </select>
                    

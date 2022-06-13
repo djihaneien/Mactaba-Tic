@@ -1,0 +1,9 @@
+{
+  "dependencies": {
+    "cors": "^2.8.5",
+    "experss": "^0.0.1-security",
+    "express": "^4.18.1",
+    "serialport": "^9.2.8",
+    "socket.io": "^2.0.4"
+  }
+}
