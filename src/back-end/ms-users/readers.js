@@ -11,7 +11,7 @@ app.use(bodyParser.json());
 const Reader=require("./reader")
 // Load Mongoose
 const mongoose = require("mongoose");
-const { home } = require("nodemon/lib/utils");
+//const { home } = require("nodemon/lib/utils");
 
 
 	// mongoose.connect("mongodb+srv://mactaba-tic:5FG21vkGOzJVioXn@ms-compte.bjwd2o7.mongodb.net/?retryWrites=true&w=majority", () =>{

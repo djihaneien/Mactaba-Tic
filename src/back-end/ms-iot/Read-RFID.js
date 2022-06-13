@@ -1,6 +1,27 @@
-var http = require('http');
-var fs = require('fs');
-var index = fs.readFileSync( 'index.html');
+const express = require("express");
+const socketIo = require("socket.io")
+const http = require("http")
+const app = express()
+const cors = require("cors");
+app.use(cors());
+const server = http.createServer(app)
+const io = socketIo(server,{ 
+    cors: {
+      origin: "http://localhost:3000"
+    }
+}) //in case server and client run on different urls
+io.on("connection",(socket)=>{
+    console.log("client connected: ",socket.id)
+    
+    socket.join("clock-room")
+    
+
+  })
+
+
+
+
+
 
 var SerialPort = require('serialport');
 const parsers = SerialPort.parsers;
@@ -19,24 +40,28 @@ var port = new SerialPort('COM17',{
 
 port.pipe(parser);
 
-var app = http.createServer(function(req, res) {
+/**var app = http.createServer(function(req, res) {
     res.writeHead(200, {'Content-Type': 'text/html'});
-    res.end(index);
+   res.end(index);
 });
 
-var io = require('socket.io').listen(app);
 
-io.on('connection', function(socket) {
+var io = require('socket.io').listen(app);**/
+
+/**io.on('connection', function(socket) {
     
     console.log('Node is listening to port');
     
-});
+});**/
 
 parser.on('data', function(data) {
     console.log('Received data from port: ' + data);
 
-    io.emit('data', data);
+    io.to("clock-room").emit('data', data);
     
 });
 
-app.listen(3001);
+server.listen(5000, err=> {
+    if(err) console.log(err)
+    console.log("Server running on Port ", 5000)
+  })
