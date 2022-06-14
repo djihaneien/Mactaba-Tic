@@ -1,21 +1,17 @@
 const express  = require("express");
 const app = express()
 const bodyParser = require("body-parser");
-<<<<<<< HEAD
-var amqp = require('amqplib/callback_api')
-=======
 const cors = require("cors");
 
 app.use(cors());
->>>>>>> 86e4686a8be6f3deb4d1237d09bcba39ca455390
 
 app.use(bodyParser.urlencoded({extended: true})); 
 app.use(bodyParser.json()); 
 
-const Reader=require("./reader")
 // Load Mongoose
 const mongoose = require("mongoose");
-//const { home } = require("nodemon/lib/utils");
+const Reader = require("./models/reader")
+const Librarian=require("./models/librarian")
 
 
 	// mongoose.connect("mongodb+srv://mactaba-tic:5FG21vkGOzJVioXn@ms-compte.bjwd2o7.mongodb.net/?retryWrites=true&w=majority", () =>{
@@ -26,16 +22,9 @@ const mongoose = require("mongoose");
 	 mongoose.connect("mongodb://localhost:27017/compte", () =>{
 		console.log("ms-compte database is concted")
        })
-<<<<<<< HEAD
-	require("./models/reader")
-	require("./models/librarian")
-	Reader = mongoose.model("Reader")
-=======
-
-
-	require("./librarian")
->>>>>>> 86e4686a8be6f3deb4d1237d09bcba39ca455390
-	Librarian=mongoose.model("Librarian")
+	
+	
+	
 	                    
 
 
@@ -53,7 +42,7 @@ app.post("/reader", async (req, res) => {
 		"email":req.body.email,
 		"password": req.body.password,
 		"birthday": req.body.birthday,
-		"Niveau": req.body.niveau,
+		"Niveau": req.body.Niveau,
 		"Rfid":req.body.Rfid,
 	}
 	
@@ -141,7 +130,7 @@ app.post("/connect",async (req, res) => {
 
 // Delete reader by name 
 app.delete("/readers/:uid", async (req, res) => {
-	Reader.find({firstName :req.params.uid}).then(() => {
+	Reader.find({Nom :req.params.uid}).then(() => {
 		console.log("reader found ")
 		res.send("User deleted with success...")
 	}).catch( () => {
@@ -151,7 +140,7 @@ app.delete("/readers/:uid", async (req, res) => {
 
 //update 
 app.put("/readers/:uid", async (req, res) => {
-	Reader.update({firstName :req.params.uid}).then(() => {
+	Reader.update({Nom :req.params.uid}).then(() => {
 		console.log("reader found ")
 		res.send("User deleted with success...")
 	}).catch( () => {
