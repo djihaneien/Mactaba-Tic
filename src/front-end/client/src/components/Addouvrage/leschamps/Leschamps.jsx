@@ -33,7 +33,7 @@ const Leschamps=()=> {
 
    const AddBook= () => {
         const formData = new FormData()
-        //formData.append('image',image)
+        formData.append('image',image)
   
       Axios.post("http://localhost:8090/addBook",  {
         isbn10:isbn10,
@@ -59,7 +59,6 @@ const Leschamps=()=> {
   return (
     <div className="leschamps">
         <div className="firstline">
-         <div className="firstElement">
            <label>ISBN10</label>
            <input placeholder="ISBN here " type="text" id="input"  onChange={(event) => {
             setIsbn10(event.target.value);
@@ -123,7 +122,7 @@ const Leschamps=()=> {
         </div>
         <button  id="sub_butt" onClick={AddBook}>Ajouter Ouverage </button>
     </div>
-    </div>
+    
   )
 }
 export default  Leschamps;
