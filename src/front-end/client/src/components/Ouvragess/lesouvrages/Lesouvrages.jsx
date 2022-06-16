@@ -1,6 +1,14 @@
 import React from 'react'
 import "./lesouvrages.css" 
 
+
+
+/*
+React.useEffect(() => {
+  Axios.get("http://localhost:8090").then((res) => setImage(res.image))
+    .catch((err) => console.log(err, "it has an error"));
+});*/
+
 export default function Lesouvrages() {
   return (
     <div className="lesouvrages">
