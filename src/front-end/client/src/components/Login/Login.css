@@ -9,8 +9,7 @@
   .main-login .login-contain {
     height: 75vh;
     width: 70%;
-    background: -webkit-gradient(linear, left top, right bottom, from(rgba(255, 255, 255, 0.7)), to(rgba(236, 236, 236, 0.4)));
-    background: linear-gradient(to right bottom, rgba(255, 255, 255, 0.7), rgba(236, 236, 236, 0.4));
+  background-color: #ffffff;
     border-radius: 1rem;
     margin: 5rem auto;
     -webkit-box-shadow: 0.5rem 0.5rem 2rem -1rem #3a3939;
@@ -42,14 +41,24 @@
     color: #00B4D8;
   }
   
-  .main-login .login-contain .left-side, .main-login .login-contain .right-side {
+.main-login .login-contain .left-side {
     margin: 2rem 2rem;
-    -webkit-box-shadow: 0.5rem 0.5rem 2rem -1rem #3a3939;
-            box-shadow: 0.5rem 0.5rem 2rem -1rem #3a3939;
+    -webkit-box-shadow: 0.5rem 0.5rem 2rem -1rem #00B4D8;
+            box-shadow: 0.5rem 0.5rem 2rem -1rem #00B4D8;
+            background-color: #fdfdfd;
     height: 90%;
     width: 100%;
+    border-radius: 10px;
   }
-  
+  .main-login .login-contain .right-side {
+    margin: 2rem 2rem;
+    -webkit-box-shadow: 0.5rem 0.5rem 2rem -1rem #00B4D8;
+            box-shadow: 0.5rem 0.5rem 2rem -1rem #00B4D8;
+            background-color: #00B4D8;
+    height: 90%;
+    width: 100%;
+    border-radius: 10px;
+  }  
   .main-login .login-contain .left-side {
     display: -webkit-box;
     display: -ms-flexbox;
