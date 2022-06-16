@@ -2,8 +2,8 @@
     min-height: 100vh;
     min-width: 100vw;
     overflow-x: hidden;
-    background: -webkit-gradient(linear, left top, right top, color-stop(50%, #dfdddd), color-stop(50%, #00B4D8));
-    background: linear-gradient(to right, #dfdddd 50%, #00B4D8 50%);
+  
+   
   }
   
   .main-login .login-contain {
@@ -64,17 +64,12 @@
   }
   
   .main-login .login-contain .left-side .img-class {
-     
-    height: 4rem;
+   height: 10%; 
   }
   
   .main-login .login-contain .left-side .img-class #img-id {
-    height: 100%;
-    vertical-align: top;
+    
     margin-left: 12rem;
-  
-    -o-object-fit: cover;
-       object-fit: cover;
   }
   
   .main-login .login-contain .left-side input {
@@ -143,7 +138,7 @@
     
   
   .left-side .Title h3{
-   margin-top: 1rem;
+   margin-top: -200px;
    margin-left: 3.9rem;
    color: gray;
    padding:auto;
@@ -153,14 +148,14 @@
   
   .main-login .login-contain .right-side .welcomeImg {
       margin-top: 7rem;
-    height: 100%;
-    width: 70%;
+    height: 50%;
+    width: 150%;
     margin-left: 2.7rem;
     /*margin: 0rem auto;*/
   }
   
   .main-login .login-contain .right-side .welcomeImg #wel-img-id {
-    width: 100%;
+    width: 50%;
     -o-object-fit: cover;
        object-fit: cover;
   }

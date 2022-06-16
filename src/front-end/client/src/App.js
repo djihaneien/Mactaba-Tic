@@ -9,6 +9,8 @@ import'./components/Nav.css';
 import Form from './components/Comptes/Form';
 import Ouvrages from "./components/Ouvragess/Ouvrages";
 import Addouvrages from './components/Addouvrage/Addouvrages';
+import AddExemplaire from './components/Addouvrage/AddExemplaire';
+import Pret from './components/pret/Pret';
 
 
 
@@ -34,6 +36,8 @@ class App extends Component {
       <Route path="/Login" element={<Login/>}/>;
       <Route path="/Ouvrages" element={<Ouvrages/>}/>;
       <Route path="/Addouvrages" element={<Addouvrages/>}/>;
+      <Route path="/AddExemplaire" element={<AddExemplaire/>}/>;
+      <Route path="/pret" element={<Pret/>}/>;
       </Routes>
     
       

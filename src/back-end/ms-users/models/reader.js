@@ -1,14 +1,11 @@
 const mongoose = require('mongoose');
 
-
-// User Model
-
-const readerSchema = new mongoose.Schema({
-	firstName: {
+const readerSchema=new mongoose.Schema( {
+	Nom: {
 		type: String,
 		
 	},
-    lastName: {
+   Prenom: {
 		type: String,
 		
 	},
@@ -28,7 +25,7 @@ const readerSchema = new mongoose.Schema({
 	Rfid:{
 		type:String,
 	},
-
-})
+	
+	})
 
 module.exports=mongoose.model("reader",readerSchema);

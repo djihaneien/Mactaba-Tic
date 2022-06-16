@@ -59,6 +59,7 @@ const Leschamps=()=> {
   return (
     <div className="leschamps">
         <div className="firstline">
+         <div className="firstElement">
            <label>ISBN10</label>
            <input placeholder="ISBN here " type="text" id="input"  onChange={(event) => {
             setIsbn10(event.target.value);
@@ -122,7 +123,7 @@ const Leschamps=()=> {
         </div>
         <button  id="sub_butt" onClick={AddBook}>Ajouter Ouverage </button>
     </div>
-    
+    </div>
   )
 }
 export default  Leschamps;

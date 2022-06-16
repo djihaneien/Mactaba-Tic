@@ -8,24 +8,45 @@ import axios from "axios";
 
 const Login=() =>{
   
-  const [emailval,setemailval]= useState("");
-  const [passval,setpassval]= useState("");
-  const navigate = useNavigate()
-  
-  
- 
-
-  const connect = () => {
-    axios.post("http://localhost:8092/connect",{
+  //const [emailval,setemailval]= useState("");
+  //const [passval,setpassval]= useState("");
+  const navigate = useNavigate();
+  //const connect = () => {
+   // axios.post("http://localhost:8092/connect",{
     
-    email: emailval,
-    password: passval
-    }).then(res=>{
-   //   alert(res.data.message);
+    //email: emailval,
+    //password: passval
+    //}).then(res=>{
        // setLoginUser(res.data.user)
-        navigate("/Ouvrages");
-      })
-  }
+      // navigate('/Ouvrages');
+      //})
+     
+  //}
+  const [data, setData] = useState({ email: "", password: "" });
+	const [error, setError] = useState("");
+
+	const handleChange = ({ currentTarget: input }) => {
+		setData({ ...data, [input.name]: input.value });
+	};
+
+  const connect = async (e) => {
+		e.preventDefault();
+		try {
+			const url = "http://localhost:8092/connect";
+			const { data: res } = await axios.post(url, data);
+      console.log(res);
+			//localStorage.setItem("token", res.data);
+			navigate("/Ouvrages");
+		} catch (error) {
+			if (
+				error.response &&
+				error.response.status >= 400 &&
+				error.response.status <= 500
+			) {
+				setError(error.response.data.message);
+			}
+		}
+	};
 
     return(
         <div className="main-login">
@@ -41,14 +62,15 @@ const Login=() =>{
                           </div>
                       
                     
-                          <form >
-                        <label htmlFor="emil1">Email</label>
-                            <input placeholder="Enter your email..." type="email" name="email" value={emailval} 
-                            onChange={(e)=>{setemailval(e.target.value)}} id="emil1"/>
-                        <label htmlFor="pwd1">Password</label>
-                            <input placeholder="Enter password" name="password" type="password"value={passval} onChange={(e)=>{setpassval(e.target.value)}}
+                          <form>
+                            <label htmlFor="emil1">Email</label>
+                            <input placeholder="Enter your email..." type="email" name="email" value={data.email} 
+                            onChange={handleChange} id="emil1"/>
+                            <label htmlFor="pwd1">Password</label>
+                            <input placeholder="Enter password" name="password" type="password"value={data.password} onChange={handleChange}
                              id="pwd1" />
                             <Link className='link' to={"/Comptes"} >Forgot Password?</Link>
+                            {error && <div>{error}</div>}
                     
                             <button type="submit" id="sub_butt" onClick={connect}> Login</button>
                          </form>

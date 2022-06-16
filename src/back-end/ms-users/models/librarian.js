@@ -3,14 +3,12 @@ const mongoose = require('mongoose');
 
 // Librarian Model
 
-mongoose.model("Librarian", {
+const libSchema = new mongoose.Schema({
 	firstName: {
-		type: String,
-		required: true
+		type: String
 	},
     lastName: {
-		type: String,
-		required: true
+		type: String
 	},
 	email: {
 		type: String,
@@ -21,12 +19,10 @@ mongoose.model("Librarian", {
 		required: true
 	},
     birthday: {
-		type: Date,
-		required:true
+		type: Date
 	},
 	creationDate: {
-		type: Date,
-		required: true
+		type: Date
 	},
     endDate: {
 		type: Date,
@@ -34,3 +30,4 @@ mongoose.model("Librarian", {
 	}
 
 })
+module.exports=mongoose.model("Librarian",libSchema);
