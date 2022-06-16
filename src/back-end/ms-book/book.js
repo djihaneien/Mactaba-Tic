@@ -1,26 +1,37 @@
 const mongoose = require('mongoose')
 
 const bookSchema = new mongoose.Schema({
-    isbn10:{
+   isbn10:{
         type:String,
-        require: true, 
+         
     },
     isbn13:{
         type:String,
-        require: true, 
+         
     },
     title: {
         type:String,
-        require: true,  
+         
     },
-    authors:[{
+    subtitle: {
         type:String,
-    }],
+       
+    },
+    description: {
+        type:String,
+        
+    },
     publisher:{
         type:String, 
     },
     publishedDate:{
         type:Date, 
+    },
+    author:{
+        type:String,
+    },
+    language:{
+        type:String, 
     },
     pages:{
        type : Number,
@@ -28,9 +39,12 @@ const bookSchema = new mongoose.Schema({
     category:{
         type: String, 
        },
-    quantity:{
-        type : Number,
-    }  
+    image:{      
+         type: Buffer,        
+    }   
+   // quantity:{
+      //  type : Number,
+    //}  
 })
 
 module.exports = mongoose.model('book',bookSchema)

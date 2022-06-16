@@ -1,17 +1,33 @@
 const express = require('express');
 const app = express(); 
+const cors = require("cors");
+
+const multer = require('multer')
 const Book = require('./book')
 const CopyBook = require('./copyBook')
-var amqp = require('amqplib/callback_api')
+
+app.use(cors());
+
 
 const mongoose = require('mongoose')
 mongoose.connect('mongodb+srv://mactaba-tic:HpHW0252rEo8k8TT@ms-book.wizna.mongodb.net/ms-book?retryWrites=true&w=majority',
 ()=>{
-    console.log('database is connected')
+   console.log('database is connected')
 })
 
 
+//mongoose.connect("mongodb://localhost:27017/ms-book", () =>{
+//		console.log("ms-book database is concted")
+//       })
 
+
+
+    const upload =multer({
+        
+    })
+
+
+  
 const bodyParser = require('body-parser');
 // recive data form json
 app.use(bodyParser.json())
@@ -48,23 +64,39 @@ app.get('/books/:title',(req,res)=>{
 })
 
 //*********** CREATION BOOK****************
-app.post('/addBook',async(req,res)=>{
+app.post('/addBook',upload.single('image'),async(req,res)=>{
     var newBook = {
-        isbn: req.body.isbn,
-        title: req.body.title, 
-        author: req.body.author,
+        isbn10: req.body.isbn10,
+        isbn13: req.body.isbn13,
+        title: req.body.title,
+        subtitle: req.body.subtitle, 
+        description: req.body. description, 
         publisher: req.body.publisher,
-        category: req.body.category, 
-        quantity: req.body.quantity,
+        publishedDate: req.body.publishedDate,
+        author: req.body.author,
+        language:req.body.language,
+        pages:req.body.pages,
+        category: req.body.category,
+        //image: req.file.buffer
+     //quantity: req.body.quantity,
     }
     console.log(req.body)
 
     var book = await new Book(newBook).save().then(()=>{
         console.log('New book created')
+    }).catch((err)=>{
+        console.log(err)
     })
     
     return res.json(book)
     
+})
+
+app.post('/idbook',(req,res)=>{
+     var isbn10 = req.body.isbn10
+     Book.findOne({isbn10:isbn10}).then((book)=>{
+        res.send(book.id)
+     })
 })
 
 app.post('/addCopyBook',async(req,res)=>{
@@ -85,19 +117,39 @@ app.post('/addCopyBook',async(req,res)=>{
 
 //*********** MODIFIER BOOK****************
 app.put('/setBook/:id',(req,res)=>{
-    var isbn= req.body.isbn
-    var title = req.body.title 
-    var author =req.body.author
-    var  publisher= req.body.publisher
-    var category= req.body.category
-    var quantity = req.body.quantity
+    var isbn10= req.body.isbn10
+    var isbn13= req.body.isbn13
+    var title = req.body.title
+    var subtitle = req.body.subtitle 
+    var description = req.body. description 
+    var publisher = req.body.publisher
+    var publishedDate = req.body.publishedDate
+    var author = req.body.author
+    var language = req.body.language
+    var pages =req.body.pages
+    var category = req.body.category 
+    var image =  {
+        data : fs.readFileSync('uploads/'+req.file),
+        contentType: "image.png/",
+    }
+   // var quantity = req.body.quantity
     Book.findByIdAndUpdate(req.params.id,{
-        isbn:isbn,
+        isbn10:isbn10,
+        isbn13:isbn13,
         title:title,
-        author:author,
+        subtitle: subtitle,
+        description : description,
         publisher: publisher,
+        publishedDate: publishedDate,
+        author:author,
+        language :language,
+        pages:pages,
         category:category,
-        quantity:quantity
+        image: {
+            data : fs.readFileSync('uploads/'+req.file),
+            contentType: "image.png/",
+        },
+        //quantity:quantity
     }).then((book)=>{
         res.json(book)
     })    
