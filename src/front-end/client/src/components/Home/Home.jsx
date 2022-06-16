@@ -1,11 +1,12 @@
 import React from "react";
 import Nav from "../Nav";
 import './Home.css';
-
+import io from "socket.io-client";
 
 
 
 const Home =() =>{
+
     return(
 <div className="conent">
    <Nav/>

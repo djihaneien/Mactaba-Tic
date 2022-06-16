@@ -3,7 +3,7 @@ const mongoose = require('mongoose');
 
 // Librarian Model
 
-const libSchema = new mongoose.Schema({
+const libSchema=new mongoose.Schema( {
 	firstName: {
 		type: String
 	},

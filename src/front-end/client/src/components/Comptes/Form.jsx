@@ -1,8 +1,11 @@
 import React from 'react';
 import './Form.css';
-import { useState } from "react";
+import { useState,useEffect } from "react";
+import { Link,useNavigate } from "react-router-dom";
 import Axios from "axios";
-import io from  "socket.io-client"
+import io from "socket.io-client";
+
+
 const Register=() =>{
     const [nom, setNom] = useState("");
     const [prenom, setPrenom] = useState("");
@@ -11,22 +14,34 @@ const Register=() =>{
     const [date, setDate] = useState("");
     const [niveau, setNiveau] = useState("");
     const [rfid, setRfid] = useState("");
-  
+    const navigate = useNavigate();
 
-  
-  React.useEffect(()=>{
-    const socket = io('http://localhost:5000')
-    //socket.on('connect', ()=>console.log("fvgrfg"))
+    useEffect(() => {
+    
+    const socket = io("http://localhost:8001", {transports: ['websocket']});
+    socket.on('connect', ()=>console.log("hmdlh ya rabi"))
    // socket.on('connect_error', ()=>{
       //setTimeout(()=>socket.connect(),5000)
    // })
-   socket.on('data',function(data) {
-    console.log(data)
-               setRfid(data)
-})
- },[])
+
+   socket.on('data', (dataa)=>{    
+               setRfid(dataa)
+            }, []);
+          });
+          const togglePopup = () => {
+            Axios.get("http://localhost:8092/readerRFID",{
+              Rfid: nom
+          }).then(response => {
+            console.log(response)
+              ///setNom(response.data);
+            });
+             
+          }
 
 
+
+ 
+ 
     const AddReader = () => {
         Axios.post("http://localhost:8092/reader", {
           Nom: nom,
@@ -37,7 +52,9 @@ const Register=() =>{
           Niveau: niveau,
           Rfid:rfid
         }).then(() => {
+      
           alert("user created")
+          
         })
     }
 
@@ -70,11 +87,8 @@ const Register=() =>{
             setPass(event.target.value);
           }}/>
  <label htmlFor="rfid">RFid</label>
-                    <input type="text" 
-          />
-                  <div className="App">
-                        ffff  {rfid}
-                             </div>
+                    <input type="text" value= {rfid} />
+                
                 <label>Niveau</label>
                     <select  onChange={(event) => {
             setNiveau(event.target.value);
@@ -84,7 +98,7 @@ const Register=() =>{
                         <option  value="Doctorat">Doctorat</option>
                         
                     </select>
-                   
+                    <button   onClick={togglePopup}>creer</button>
                 <button  id="sub_butt" onClick={AddReader}>Ajouter</button>
                 </form>
                 </div>
