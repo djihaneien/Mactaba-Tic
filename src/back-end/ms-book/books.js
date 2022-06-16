@@ -10,15 +10,14 @@ app.use(cors());
 
 
 const mongoose = require('mongoose')
-mongoose.connect('mongodb+srv://mactaba-tic:HpHW0252rEo8k8TT@ms-book.wizna.mongodb.net/ms-book?retryWrites=true&w=majority',
+ /*mongoose.connect('mongodb+srv://mactaba-tic:HpHW0252rEo8k8TT@ms-book.wizna.mongodb.net/ms-book?retryWrites=true&w=majority',
 ()=>{
    console.log('database is connected')
-})
+})*/
 
-
-//mongoose.connect("mongodb://localhost:27017/ms-book", () =>{
-//		console.log("ms-book database is concted")
-//       })
+mongoose.connect("mongodb://localhost:27017/ms-book", () =>{
+	console.log("ms-book database is concted")
+      })
 
 
 
@@ -101,7 +100,7 @@ app.post('/idbook',(req,res)=>{
 
 app.post('/addCopyBook',async(req,res)=>{
     var newCopyBook = {
-        rifd: req.body.rfid,
+        rfid: req.body.rfid,
         book : req.body.book,
        
     }
@@ -128,10 +127,10 @@ app.put('/setBook/:id',(req,res)=>{
     var language = req.body.language
     var pages =req.body.pages
     var category = req.body.category 
-    var image =  {
+    /*var image =  {
         data : fs.readFileSync('uploads/'+req.file),
         contentType: "image.png/",
-    }
+    }*/
    // var quantity = req.body.quantity
     Book.findByIdAndUpdate(req.params.id,{
         isbn10:isbn10,
