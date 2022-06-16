@@ -93,6 +93,18 @@ app.get("/readers",async (req, res) => {
 		}
 	})
 })
+//Get reader by RFID
+app.post("/readerRFID",async (req, res) => {
+	var Rfid=req.body.Rfid;
+	console.log(Rfid)
+	Reader.findOne({Rfid:Rfid}).then((readers) => {
+		res.send(readers.Prenom)
+	}).catch((err) => {
+		if(err) {
+			throw err
+		}
+	})
+})
 
 // GET all librarians
 app.get("/librarians",async (req, res) => {
@@ -109,6 +121,7 @@ app.post("/connect",async (req, res) => {
      var email=req.body.email;
 	 var password= req.body.password;
 	 console.log(email);
+	 console.log(password);
 
 	Librarian.findOne({email:email}).then((librarians) => {
 		console.log(librarians)
@@ -118,7 +131,7 @@ app.post("/connect",async (req, res) => {
               })
 		}
       Librarian.findOne({password:password}).then((librarians)=>{
-		console.log(librarians)
+	
 		if(librarians) {
 			res.send({message:"user found"})
 	  }

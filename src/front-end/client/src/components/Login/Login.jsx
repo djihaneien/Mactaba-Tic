@@ -20,9 +20,10 @@ const Login=() =>{
     
     email: emailval,
     password: passval
+    
     }).then(res=>{
        // setLoginUser(res.data.user)
-        navigate("/Ouvrages");
+        navigate("/Ouvrages",{replace:true});
       })
      
   }

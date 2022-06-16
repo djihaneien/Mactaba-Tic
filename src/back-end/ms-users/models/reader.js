@@ -27,7 +27,7 @@ const readerSchema=new mongoose.Schema( {
 	},
 	
 	Rfid:{
-		type:Number,
+		type:String,
 	}
 
 })
