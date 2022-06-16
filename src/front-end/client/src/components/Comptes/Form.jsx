@@ -14,7 +14,7 @@ const Register=() =>{
   
 
   
- /** React.useEffect(()=>{
+  React.useEffect(()=>{
     const socket = io('http://localhost:5000')
     //socket.on('connect', ()=>console.log("fvgrfg"))
    // socket.on('connect_error', ()=>{
@@ -26,8 +26,7 @@ const Register=() =>{
 })
  },[])
 
- 
- },[])**/
+
     const AddReader = () => {
         Axios.post("http://localhost:8092/reader", {
           Nom: nom,
