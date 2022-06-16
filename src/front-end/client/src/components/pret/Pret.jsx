@@ -15,7 +15,7 @@ const pret =() =>{
     const [finalpopup,setFinalPopup]= useState(false);
     const toggleFinalPopup = () => {
         setFinalPopup(!finalpopup);
-        setNextPopup(!nextpopup);
+      
     }
     return(
 <div className="conent">
@@ -57,10 +57,10 @@ const pret =() =>{
 </div> )}
 {finalpopup && (
 <div className="finalpopup">
-
+<div onClick={toggleFinalPopup} className="overlay"></div>
   <span className="popup-content"  >
     <h2>Félicitation! le livre est à votre disposition</h2>
-    <button className='ok-popup' onClick={toggleFinalPopup}>ok</button>
+
 
   </span>
 </div> )}

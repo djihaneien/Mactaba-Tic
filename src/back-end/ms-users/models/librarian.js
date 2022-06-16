@@ -3,7 +3,7 @@ const mongoose = require('mongoose');
 
 // Librarian Model
 
-mongoose.model("Librarian", {
+const libSchema = new mongoose.Schema({
 	firstName: {
 		type: String
 	},
@@ -30,3 +30,4 @@ mongoose.model("Librarian", {
 	}
 
 })
+module.exports=mongoose.model("Librarian",libSchema);

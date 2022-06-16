@@ -6,8 +6,10 @@ export default function Leschamps() {
   return (
     <div className="leschamps">
         <div className="firstline">
+         <div className="firstElement">
            <label>ISBN10</label>
            <input placeholder="ISBN here " type="number" id="input"></input>
+           </div>
            <label>ISBN13</label>
            <input placeholder="ISBN here " type="number" id="input"></input>
            <label>Pages</label>

@@ -11,7 +11,9 @@ export default function Addouvrages() {
       <Topbar/>
       <div className="container">
         <Sidebar/>
+        <div className="contentt">
         <Leschamps/>
+        </div>
 
       </div>
         
