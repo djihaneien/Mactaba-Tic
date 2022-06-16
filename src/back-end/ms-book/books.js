@@ -10,14 +10,14 @@ app.use(cors());
 
 
 const mongoose = require('mongoose')
- /*mongoose.connect('mongodb+srv://mactaba-tic:HpHW0252rEo8k8TT@ms-book.wizna.mongodb.net/ms-book?retryWrites=true&w=majority',
+ mongoose.connect('mongodb+srv://mactaba-tic:HpHW0252rEo8k8TT@ms-book.wizna.mongodb.net/ms-book?retryWrites=true&w=majority',
 ()=>{
    console.log('database is connected')
-})*/
+})
 
-mongoose.connect("mongodb://localhost:27017/ms-book", () =>{
+/*mongoose.connect("mongodb://localhost:27017/ms-book", () =>{
 	console.log("ms-book database is concted")
-      })
+      })*/
 
 
 

@@ -13,23 +13,7 @@ const Login=() =>{
   const navigate = useNavigate();
   //const connect = () => {
    // axios.post("http://localhost:8092/connect",{
-    
-<<<<<<< HEAD
-    email: emailval,
-    password: passval
-    
-    }).then(res=>{
-       // setLoginUser(res.data.user)
-        navigate("/Ouvrages",{replace:true});
-      })
-=======
-    //email: emailval,
-    //password: passval
-    //}).then(res=>{
-       // setLoginUser(res.data.user)
-      // navigate('/Ouvrages');
-      //})
->>>>>>> ff1c2ee05626776561de22545a1347dd8ef69bf2
+  
      
   //}
   const [data, setData] = useState({ email: "", password: "" });
