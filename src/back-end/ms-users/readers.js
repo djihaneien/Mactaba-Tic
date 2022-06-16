@@ -21,9 +21,12 @@ const mongoose = require("mongoose");
 
 
 
-	 mongoose.connect("mongodb+srv://mactaba-tic:5FG21vkGOzJVioXn@ms-compte.bjwd2o7.mongodb.net/?retryWrites=true&w=majority", () =>{
+	 mongoose.connect("mongodb+srv://mactaba-tic:wdwfeAsjt4ktBtVp@ms-user.lx0sozm.mongodb.net/?retryWrites=true&w=majority", () =>{
 		console.log("ms-compte database is concted")
       })
+
+
+	  //
   
 	   
 	 /*mongoose.connect("mongodb://localhost:27017/compte", () =>{
@@ -72,8 +75,6 @@ app.post("/lib", async (req, res) => {
 		"email":req.body.email,
 		"password": req.body.password,
 		"birthday": req.body.birthday,
-		"creationDate": req.body.creationDate,
-		"endDate":req.body.endDate,
 
 	}
 	

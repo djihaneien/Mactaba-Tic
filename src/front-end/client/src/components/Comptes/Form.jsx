@@ -98,7 +98,7 @@ const Register=() =>{
                         <option  value="Doctorat">Doctorat</option>
                         
                     </select>
-                    <button   onClick={togglePopup}>creer</button>
+                
                 <button  id="sub_butt" onClick={AddReader}>Ajouter</button>
                 </form>
                 </div>
