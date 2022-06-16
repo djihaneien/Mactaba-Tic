@@ -115,7 +115,7 @@ useEffect(()=>{
 </div> )}
 {finalpopup && (
 <div className="finalpopup">
-
+<div onClick={toggleFinalPopup} className="overlay"></div>
   <span className="popup-content"  >
     <h2>Félicitation! le livre est à votre disposition</h2>
     <button className='ok-popup' onClick={toggleExitPopup}>ok</button>

@@ -1,31 +1,39 @@
 const express  = require("express");
 const app = express()
 const bodyParser = require("body-parser");
-const cors = require("cors");
 
+var amqp = require('amqplib/callback_api')
+const cors = require("cors");
+const Reader = require("./models/reader")
+const Librarian=require("./models/librarian")
+					
 app.use(cors());
 
 app.use(bodyParser.urlencoded({extended: true})); 
 app.use(bodyParser.json()); 
 
+
 // Load Mongoose
 const mongoose = require("mongoose");
-const Reader = require("./models/reader")
+
+const Reader=require("./models/reader")
 const Librarian=require("./models/librarian")
+// Load Mongoose
+const mongoose = require("mongoose");
 
 
-	// mongoose.connect("mongodb+srv://mactaba-tic:5FG21vkGOzJVioXn@ms-compte.bjwd2o7.mongodb.net/?retryWrites=true&w=majority", () =>{
+
+
+	 //mongoose.connect("mongodb+srv://mactaba-tic:5FG21vkGOzJVioXn@ms-compte.bjwd2o7.mongodb.net/?retryWrites=true&w=majority", () =>{
 	//	console.log("ms-compte database is concted")
-     //  })
+     // })
   
 	   
 	 mongoose.connect("mongodb://localhost:27017/compte", () =>{
 		console.log("ms-compte database is concted")
        })
-	
-	
-	
-	                    
+
+
 
 
 
@@ -133,7 +141,7 @@ app.post("/connect",async (req, res) => {
       Librarian.findOne({password:password}).then((librarians)=>{
 	
 		if(librarians) {
-			res.send({message:"user found"})
+			res.send(librarians)
 	  }
 	  
 

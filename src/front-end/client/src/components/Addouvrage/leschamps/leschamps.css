@@ -7,6 +7,9 @@
 .firstline,.secondline,.thirdline,.forthline{
   display:flex;
 }
+.firstElement{
+  display:block;
+}
  input {
   border: none;
   height: 2rem;

@@ -1,8 +1,5 @@
 const mongoose = require('mongoose');
 
-
-// User Model
-
 const readerSchema=new mongoose.Schema( {
 	Nom: {
 		type: String,
@@ -25,11 +22,10 @@ const readerSchema=new mongoose.Schema( {
 	Niveau:{
 		type:String,
 	},
-	
 	Rfid:{
 		type:String,
 	}
 
 })
 
-module.exports=mongoose.model("Reader",readerSchema);
+module.exports=mongoose.model("reader",readerSchema);

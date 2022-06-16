@@ -23,6 +23,7 @@ const Register=() =>{
    // socket.on('connect_error', ()=>{
       //setTimeout(()=>socket.connect(),5000)
    // })
+<<<<<<< HEAD
    socket.on('data', (dataa)=>{    
                setRfid(dataa)
             }, []);
@@ -36,6 +37,16 @@ const Register=() =>{
             });
              
           }
+=======
+   socket.on('data',function(data) {
+    console.log(data)
+               setRfid(data)
+})
+ },[])
+
+ 
+ },[])**/
+>>>>>>> ff1c2ee05626776561de22545a1347dd8ef69bf2
     const AddReader = () => {
         Axios.post("http://localhost:8092/reader", {
           Nom: nom,
