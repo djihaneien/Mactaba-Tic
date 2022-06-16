@@ -4,8 +4,26 @@ const http = require("http")
 const app = express()
 const cors = require("cors");
 app.use(cors());
+
+
+var SerialPort = require('serialport');
+const parsers = SerialPort.parsers;
+const parser = new parsers.Readline({
+   delimiter: '\r\n'
+});
+
+var port = new SerialPort('COM17',{ 
+    baudRate: 9600,
+    dataBits: 8,
+    parity: 'none',
+    stopBits: 1,
+    flowControl: false
+});
+
+port.pipe(parser);
 const server = http.createServer(app)
-const io = socketIo(server,{ 
+//var io = require('socket.io').listen(app);
+const io = socketIo.listen(server,{ 
     cors: {
       origin: "http://localhost:3000"
     }
@@ -18,26 +36,6 @@ io.on("connection",(socket)=>{
 
   })
 
-
-
-
-
-
-var SerialPort = require('serialport');
-const parsers = SerialPort.parsers;
-const parser = new parsers.Readline({
-   delimiter: '\r\n'
-});
-
-var port = new SerialPort('COM11',{ 
-    baudRate: 9600,
-    dataBits: 8,
-    parity: 'none',
-    stopBits: 1,
-    flowControl: false
-});
-
-port.pipe(parser);
 
 /**var app = http.createServer(function(req, res) {
     res.writeHead(200, {'Content-Type': 'text/html'});
