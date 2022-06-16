@@ -24,8 +24,8 @@ const readerSchema=new mongoose.Schema( {
 	},
 	Rfid:{
 		type:String,
-	},
-	
-	})
+	}
+
+})
 
 module.exports=mongoose.model("reader",readerSchema);

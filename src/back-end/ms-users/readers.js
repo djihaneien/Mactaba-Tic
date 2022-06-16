@@ -16,22 +16,19 @@ app.use(bodyParser.json());
 // Load Mongoose
 const mongoose = require("mongoose");
 
-const Reader=require("./models/reader")
-const Librarian=require("./models/librarian")
-// Load Mongoose
-const mongoose = require("mongoose");
 
 
 
 
-	 //mongoose.connect("mongodb+srv://mactaba-tic:5FG21vkGOzJVioXn@ms-compte.bjwd2o7.mongodb.net/?retryWrites=true&w=majority", () =>{
-	//	console.log("ms-compte database is concted")
-     // })
+
+	 mongoose.connect("mongodb+srv://mactaba-tic:5FG21vkGOzJVioXn@ms-compte.bjwd2o7.mongodb.net/?retryWrites=true&w=majority", () =>{
+		console.log("ms-compte database is concted")
+      })
   
 	   
-	 mongoose.connect("mongodb://localhost:27017/compte", () =>{
+	 /*mongoose.connect("mongodb://localhost:27017/compte", () =>{
 		console.log("ms-compte database is concted")
-       })
+       })*/
 
 
 
@@ -101,6 +98,18 @@ app.get("/readers",async (req, res) => {
 		}
 	})
 })
+//Get reader by RFID
+app.post("/readerRFID",async (req, res) => {
+	var Rfid=req.body.Rfid;
+	console.log(Rfid)
+	Reader.findOne({Rfid:Rfid}).then((readers) => {
+		res.send(readers.Prenom)
+	}).catch((err) => {
+		if(err) {
+			throw err
+		}
+	})
+})
 
 // GET all librarians
 app.get("/librarians",async (req, res) => {
@@ -117,6 +126,7 @@ app.post("/connect",async (req, res) => {
      var email=req.body.email;
 	 var password= req.body.password;
 	 console.log(email);
+	 console.log(password);
 
 	Librarian.findOne({email:email}).then((librarians) => {
 		console.log(librarians)
@@ -126,7 +136,7 @@ app.post("/connect",async (req, res) => {
               })
 		}
       Librarian.findOne({password:password}).then((librarians)=>{
-		console.log(librarians)
+	
 		if(librarians) {
 			res.send(librarians)
 	  }
