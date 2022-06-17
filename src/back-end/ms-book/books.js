@@ -40,7 +40,7 @@ app.get('/',(req,res)=>{
 app.get('/books',(req,res)=>{
     // return promise
     Book.find().then((books)=>{
-         res.json(books)
+         res.send(books)
     })
 })
 
@@ -76,7 +76,7 @@ app.post('/addBook',upload.single('image'),async(req,res)=>{
         language:req.body.language,
         pages:req.body.pages,
         category: req.body.category,
-        //image: req.file.buffer
+     //   image: req.file.buffer.toString('base64')
      //quantity: req.body.quantity,
     }
     console.log(req.body)
@@ -102,16 +102,28 @@ app.post('/addCopyBook',async(req,res)=>{
     var newCopyBook = {
         rfid: req.body.rfid,
         book : req.body.book,
-       
+        
     }
     console.log(req.body)
-
     var copyBook = await new CopyBook(newCopyBook ).save().then(()=>{
-        console.log('New copy book created')
-    })
+        console.log("book created")})
     
     return res.json(copyBook)
     
+})
+//Get Book BY RFID 
+app.post("/bookRFID",async (req, res) => {
+	var rfid=req.body.rfid;
+	console.log(rfid)
+	CopyBook.findOne({rfid:rfid}).then((copybooks) => {
+        Book.findById(copybooks.book).then((books) => {
+                        res.send(books.title)
+        })
+			}).catch((err) => {
+		if(err) {
+			throw err
+		}
+	})
 })
 
 //*********** MODIFIER BOOK****************

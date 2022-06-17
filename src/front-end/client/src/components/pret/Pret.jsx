@@ -7,10 +7,16 @@ import io from "socket.io-client";
 const pret =() =>{
   const [rfid, setRfid] = useState("");
   const [nom, setNom] = useState('');
+  const [nomBook, setNomBook] = useState('');
+
+  const [rfidUser, setRfidUSER] = useState("");
+  const [rfidBook, setRfidBook] = useState("");
+   const cur = new Date();
+   cur.setDate(cur.getDate()+15)
 
 useEffect(()=>{
   const socket = io('http://localhost:8001')
-  socket.on('connect', ()=>console.log("fvgrfg"))
+  socket.on('connect', ()=> console.log(cur.toDateString()))
  // socket.on('connect_error', ()=>{
     //setTimeout(()=>socket.connect(),5000)
  // })
@@ -35,15 +41,18 @@ useEffect(()=>{
     
    }
   
+  
   const closePopup = () => {
     setPopup(false)
     setRfid("");
 }
 useEffect(()=>{
-  if(rfid !=="" ){
+  if((rfid !=="" )&&(popup==true)){
+    setRfidUSER(rfid);
     axios.post("http://localhost:8092/readerRFID",{
         Rfid: rfid
     }).then(response => {
+    
       console.log(response.data)
       setNom(response.data);
       });
@@ -52,30 +61,42 @@ useEffect(()=>{
    setPopup(false);
   }
 },[rfid]);
+
+useEffect(()=>{
+  if((rfid !=="" )&&(popup==false)){
+    setRfidBook(rfid);
+    axios.post("http://localhost:8090/bookRFID",{
+        rfid: rfid
+    }).then(response => {
+      console.log(response.data)
+      setNomBook(response.data);
+      });
+      axios.post("http://localhost:8093/pret",{
+        rfidReader:rfidUser,
+        rfidBook:rfidBook,
+        dateLoan:new Date().toDateString(),
+        dateReturn:cur.toDateString()
+      }).then(res=>{
+        
+      })
+      setFinalPopup(!finalpopup);
+   
+      //   setPopup(false);
+  }
+},[rfid]);
     //const toggleNextPopup = () => {
         //setNextPopup(!nextpopup);
         //setPopup(false);
     
     //}
-    const toggleFinalPopup = () => {
-        setFinalPopup(!finalpopup);
-      
-    }
     const toggleExitPopup = () => {
       setFinalPopup(!finalpopup);
       setNextPopup(false);
       setPopup(false);
+      setRfid("");
     
   }
   
-  useEffect(()=>{
-  if(rfid !=="" ){
-    //alert("cc");
-    setPopup(!popup)
-  //  setNextPopup(!nextpopup);
-  //  setPopup(false);
-  }
-},[rfid]);
     return(
 <div className="conent">
 <img src="./pret.png" id='pret-id' alt=""  />
@@ -97,7 +118,6 @@ useEffect(()=>{
     <h2>Veuillez scanner votre carte</h2>
     <div className="actions">
     <button className='close-popup' onClick={closePopup}>close</button>
-    <button className='next-popup' >next</button>
     </div>
   </span>
 </div> )}
@@ -108,16 +128,14 @@ useEffect(()=>{
   <h2>Cher {nom}</h2>
     <h2>Veuillez scanner le livre</h2>
     <div className="actions">
-    <button className='close-popup' /**onClick={toggleNextPopup}**/>close</button>
-    <button className='next-popup' onClick={toggleFinalPopup}>confirmer</button>
     </div>
   </span>
 </div> )}
 {finalpopup && (
 <div className="finalpopup">
-<div onClick={toggleFinalPopup} className="overlay"></div>
+<div  className="overlay"></div>
   <span className="popup-content"  >
-    <h2>Félicitation! le livre est à votre disposition</h2>
+    <h2>Félicitation! le livre {nomBook} est à votre disposition</h2>
     <button className='ok-popup' onClick={toggleExitPopup}>ok</button>
 
   </span>

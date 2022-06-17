@@ -16,17 +16,10 @@ const Register=() =>{
     const [rfid, setRfid] = useState("");
     const navigate = useNavigate();
 
-<<<<<<< HEAD
-  
-  React.useEffect(()=>{
-    const socket = io('http://localhost:5000')
-    //socket.on('connect', ()=>console.log("fvgrfg"))
-=======
     useEffect(() => {
     
     const socket = io("http://localhost:8001", {transports: ['websocket']});
     socket.on('connect', ()=>console.log("hmdlh ya rabi"))
->>>>>>> 63430d7136afc97b4700568c6ad0ab4ba2c06f1e
    // socket.on('connect_error', ()=>{
       //setTimeout(()=>socket.connect(),5000)
    // })
@@ -47,12 +40,8 @@ const Register=() =>{
 
 
 
-<<<<<<< HEAD
-
-=======
  
  
->>>>>>> 63430d7136afc97b4700568c6ad0ab4ba2c06f1e
     const AddReader = () => {
         Axios.post("http://localhost:8092/reader", {
           Nom: nom,

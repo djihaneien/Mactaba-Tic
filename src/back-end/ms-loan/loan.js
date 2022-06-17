@@ -1,15 +1,23 @@
-const express = require('express');
-const app = express(); 
-const Loan =require('./loan')
-
 const mongoose = require('mongoose')
-mongoose.connect('mongodb+srv://mactaba-tic:yTKmjcefFfmOgMFE@ms-loan.qgtc9l7.mongodb.net/?retryWrites=true&w=majority',
-()=>{
-    console.log('database is connected')
+
+const loanSchema = new mongoose.Schema({
+   rfidReader:{
+        type:String,
+         
+    },
+    rfidBook:{
+        type:String,
+         
+    },
+    dateLoan: {
+        type:Date,
+         
+    },
+    dateReturn: {
+        type:Date,
+       
+    },
+    
 })
 
-
-
-app.listen(8093,()=>{
-    console.log('Ms-Loan is runnig on 8093')
-})
+module.exports = mongoose.model('loan',loanSchema)
