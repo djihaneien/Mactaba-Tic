@@ -2,6 +2,7 @@ import React from 'react'
 import "./lesouvrages.css" 
 import Axios from "axios";
 import { useState } from "react";
+import { Link,useNavigate } from "react-router-dom";
 
 
 
@@ -23,7 +24,8 @@ export default function Lesouvrages() {
   return (
     <div className="lesouvrages">
         <div className="ouvrages">
-            <span className="ouvragesTitle">{val.title}</span>
+        <Link className='link' to={"/Comptes"} >
+            <span className="ouvragesTitle">{val.title}</span></Link>
             <div className="Image">
             <img className="image" />
              </div>
