@@ -13,12 +13,24 @@ body{
 #wel-id {
  
  
- height: 90%;
+ height: 100%;
 -o-object-fit: cover;
    object-fit: cover;
+   position: fixed;
+   z-index: 0;
+}
+#id2{
+  height: auto;
+  width: auto;
+  margin-top: 7rem;
+  margin-left: 40rem;
+  -o-object-fit: cover;
+   object-fit: cover;
+   position: fixed;
+   z-index: 1;
 }
 h3{
-  position:absolute;
+  position:fixed;
   top:55%;
   left: 2.5%;
   color:#03045E;
@@ -38,7 +50,7 @@ h3{
         -webkit-transition: all 0.2s ease;
         transition: all 0.2s ease;
         margin-left: 6rem;
-        position: absolute;
+        position:fixed;
         top:70%;
         left:1%
        

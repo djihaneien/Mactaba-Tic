@@ -4,6 +4,7 @@ import Sidebar from '../Addouvrage/sidebar/Sidebar';
 import  '../Addouvrage/sidebar/sidebar.css';
 import Topbar from '../Addouvrage/topbar/Topbar';
 import '../Addouvrage/topbar/topbar.css';
+
 import { useState,useEffect } from "react";
 import { Link,useNavigate } from "react-router-dom";
 import Axios from "axios";
@@ -95,13 +96,13 @@ const Register=() =>{
               <div className='container'>
               <Sidebar />
               <div className='grid-container'>
-            <h2>Veuillez remplir le formulaire:</h2>
+           
 
             <div className='Form'>
                
                 <form >
-                    <div className='container'>
-                        <div className='row'>
+                    <div className='leschamps'>
+                        <div className='firstline'>
                 <label >Nom</label>
                     <input className='h col-lg-4' type="texte" onChange={(event) => {
             setNom(event.target.value);
@@ -114,8 +115,9 @@ const Register=() =>{
                     <input className='h col-lg-11' type="Date"  onChange={(event) => {
             setDate(event.target.value);
           }}/>
+                    
                     </div>
-                    </div>
+                    <div className='secondline'>
                 <label htmlFor="email">Email</label>
                     <input type="text"  onChange={(event) => {
             setEmail(event.target.value);
@@ -136,14 +138,16 @@ const Register=() =>{
                         <option  value="Doctorat">Doctorat</option>
                         
                     </select>
-                
+                    </div>
+                    </div>
                 <button  id="sub_butt" onClick={AddReader}>Ajouter</button>
                 </form>
+                
                 </div>
                 
                 <div className="Right">
             <hr></hr>
-            <h2>Table des Lecteurs:</h2>
+           
             <div className="search1">
         
         <div class="p-1 bg-light rounded rounded-pill shadow-sm mb-4">

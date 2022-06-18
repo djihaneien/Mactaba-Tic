@@ -30,8 +30,9 @@
     color: #828282;
     -webkit-transition: all 0.3s ease;
     transition: all 0.3s ease;
-   margin-left: 18rem;
+   margin-left: 15rem;
    margin-bottom: 1rem;
+   font-size: smaller;
    
   }
   
@@ -73,12 +74,20 @@
   }
   
   .main-login .login-contain .left-side .img-class {
-   height: 10%; 
+   margin: 0;
+    padding: 0;
+    height: 4rem; 
   }
   
   .main-login .login-contain .left-side .img-class #img-id {
-    
-    margin-left: 12rem;
+    height: 100%;
+    width: auto;
+    margin-left: 9.5rem;
+    margin-top: 0.5rem;
+
+     -o-object-fit: contain;
+        object-fit: contain;
+ 
   }
   
   .main-login .login-contain .left-side input {
@@ -110,14 +119,15 @@
     display: block;
     text-align: left;
     width: 78%;
-    margin: auto;
+    margin-top: 1rem;
+    margin-left: 2rem;
     font-size: small;
     color: gray;
     margin-bottom: 0.5rem;
   }
   
   .main-login .login-contain .left-side #sub_butt {
-    width: 80%;
+    width: 50%;
     background: #00B4D8;
     color: white;
     border: none;
@@ -125,8 +135,9 @@
     padding: 0.5rem 1rem;
     -webkit-transition: all 0.2s ease;
     transition: all 0.2s ease;
-    margin-left: 2.8rem;
+    margin-left: 5.5rem;
     margin-top: 1rem;
+    border-radius: 10px;
   }
   
   .main-login .login-contain .left-side #sub_butt:hover {
@@ -146,25 +157,26 @@
     
     
   
-  .left-side .Title h3{
-   margin-top: -200px;
-   margin-left: 3.9rem;
+  .left-side .Title h2{
+   margin-top: 1rem;
+   margin-left: 5rem;
    color: gray;
-   padding:auto;
+  font-size: smaller;
+  text-decoration: none;
   
  
  }
   
   .main-login .login-contain .right-side .welcomeImg {
-      margin-top: 7rem;
-    height: 50%;
-    width: 150%;
-    margin-left: 2.7rem;
+      margin-top: 0rem;
+    height: 100%;
+    width: 70%;
+    margin-left: 4.2rem;
     /*margin: 0rem auto;*/
   }
   
   .main-login .login-contain .right-side .welcomeImg #wel-img-id {
-    width: 50%;
-    -o-object-fit: cover;
-       object-fit: cover;
+    width: 100%;
+    -o-object-fit: fill;
+       object-fit: fill;
   }

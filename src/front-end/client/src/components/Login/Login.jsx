@@ -1,7 +1,7 @@
 import React,{useState,useEffect} from "react";
 import './Login.css';
 import { Link,useNavigate } from "react-router-dom";
-import welcomeimg from"./welcomeback.svg";
+import welcomeimg from"./welcome.svg";
 import logo from "./logo.png";
 import axios from "axios";
 
@@ -52,7 +52,7 @@ const Login=() =>{
                           </div>
                           <div className="Title">
                          
-                        <h3>Sign In to continue to our application</h3>
+                        <h2>Sign In to continue to our application</h2>
                           </div>
                       
                     

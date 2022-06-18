@@ -1,4 +1,10 @@
+.Menu{
+  margin: 0;
+  padding: 0;
+}
 .sidebar {
+  margin: 0;
+  padding: 0;
     flex: 1;
     height: calc(100vh - 50px);
     background-color: #00B4D8;
@@ -10,6 +16,7 @@
   .sidebarWrapper {
     padding: 20px;
     color: rgb(255, 255, 255);
+    margin-top: 2rem;
     
   }
   
@@ -17,17 +24,23 @@
     margin-bottom: 10px;
   }
   
-  .sidebarTitle {
+  .sidebarTitle h2 {
+top:10rem;
+left:5.7rem;
+margin-bottom: auto;
+position: fixed;
+
     font-size:20px;
     color: rgb(255, 255, 255);
   }
   
   .sidebarList {
+    margin-top: 2rem;
     list-style: none;
     padding: 5px;
   }
   
-  .sidebarListItem {
+  .sidebarListItem1 {
     padding: 15px;
     cursor: pointer;
     display: flex;
@@ -35,9 +48,11 @@
     border-radius: 10px;
   }
   
-  .sidebarListItem.active,
-  .sidebarListItem:hover {
-    background-color: #03045E;
+
+  .sidebarListItem1:hover {
+    background-color: white;
+    color: #00B4D8;
+    
   }
   
   .sidebarIcon{
@@ -45,3 +60,7 @@
       font-size: 20px !important;
       color: rgb(255, 255, 255);
   }
+  .sidebarIcon:hover{
+    color: #00B4D8;
+  }
+  
