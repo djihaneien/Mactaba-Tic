@@ -13,6 +13,7 @@ export default function Lesouvrages() {
  
     Axios.get("http://localhost:8090/books").then((response) => {
       setbookList(response.data);
+     
       console.log(bookList)
     });
   
@@ -23,14 +24,16 @@ export default function Lesouvrages() {
   {bookList.map(function(val, key)  {
   return (
     <div className="lesouvrages">
+    <Link className='link' to={`/AfficherOuvrage/${val.title}`} >
         <div className="ouvrages">
-        <Link className='link' to={"/Comptes"} >
-            <span className="ouvragesTitle">{val.title}</span></Link>
+        
+            <span className="ouvragesTitle">{val.title}</span>
             <div className="Image">
-            <img className="image" />
+            <img className="image" src={`data:image/png;base64,${val.image}`} />
              </div>
   
       </div>
+      </Link>
         </div>
     
   )

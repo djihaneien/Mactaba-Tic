@@ -39,9 +39,9 @@ const bookSchema = new mongoose.Schema({
     category:{
         type: String, 
        },
- /**   image:{      
+   image:{      
         type: String,        
-    }  */ 
+    }  
    // quantity:{
       //  type : Number,
     //}  

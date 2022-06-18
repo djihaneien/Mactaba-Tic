@@ -9,7 +9,7 @@ import'./components/Nav.css';
 import Form from './components/Comptes/Form';
 import Ouvrages from "./components/Ouvragess/Ouvrages";
 import Addouvrages from './components/Addouvrage/Addouvrages';
-
+import AfficherOuvrage from './components/AfficherOuvrage/AfficherOuvrage';
 import Pret from './components/pret/Pret';
 
 
@@ -37,6 +37,7 @@ class App extends Component {
       <Route path="/Ouvrages" element={<Ouvrages/>}/>;
       <Route path="/Addouvrages" element={<Addouvrages/>}/>;
       <Route path="/pret" element={<Pret/>}/>;
+      <Route name="Afficher"path="/AfficherOuvrage/:param1" element={<AfficherOuvrage/>}/>;
       </Routes>
     
       
