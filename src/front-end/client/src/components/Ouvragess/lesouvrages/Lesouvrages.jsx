@@ -27,7 +27,7 @@ export default function Lesouvrages() {
         <Link className='link' to={"/Comptes"} >
             <span className="ouvragesTitle">{val.title}</span></Link>
             <div className="Image">
-            <img className="image" />
+            <img className="image" src= {`data:image/png;base64,${val.image}`}/>
              </div>
   
       </div>

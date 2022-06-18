@@ -47,7 +47,8 @@ const Leschamps=()=> {
         const formData = new FormData()
         formData.append('image',image)
         formData.append('isbn10',isbn10)  
-         Axios.post("http://localhost:8090/addBook",{
+        formData.append('title',title) 
+         Axios.post("http://localhost:8090/addBook",formData/*{
         
           isbn10:isbn10,
           isbn13: isbn13,
@@ -59,8 +60,8 @@ const Leschamps=()=> {
           author: author,
           language:language,
           pages:pages,
-          category:category,
-        }).then(() => {
+          category:category, 
+        }*/ ).then(() => {
           Axios.post("http://localhost:8090/idbook",  {
         isbn10:isbn10
       }).then((res)=>{
@@ -169,6 +170,7 @@ alert('book added')
            <input placeholder="description " type="text" id="input"  onChange={(event) => {
             setDescription(event.target.value);
           }}></input>
+          
            <label>Choisirr une couverture</label>
            <input  type="file" id="img" name="img" accept="image/*" filename='image'  onChange={(event) => {
             setImage(event.target.files[0]);

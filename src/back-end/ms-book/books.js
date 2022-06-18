@@ -76,7 +76,7 @@ app.post('/addBook',upload.single('image'),async(req,res)=>{
         language:req.body.language,
         pages:req.body.pages,
         category: req.body.category,
-     //   image: req.file.buffer.toString('base64')
+        image: req.file.buffer.toString('base64')
      //quantity: req.body.quantity,
     }
     console.log(req.body)
