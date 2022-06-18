@@ -3,7 +3,6 @@ import './pret.css';
 import axios from "axios";
 import io from "socket.io-client";
 
-
 const pret =() =>{
   const [rfid, setRfid] = useState("");
   const [nom, setNom] = useState('');
@@ -27,20 +26,19 @@ useEffect(()=>{
 },[]);
 
     const [popup,setPopup]= useState(false);
+    const [pret,setPret]= useState(false);
+
     const [nextpopup,setNextPopup]= useState(false);
     const [finalpopup,setFinalPopup]= useState(false);
+  //============================Preter un livre================================================
    const togglePopup = () => {
-     /**  axios.post("http://localhost:8092/readerRFID",{
-        Rfid: rfid
-    }).then(response => {
-      //console.log(response.data)
-      setNom(response.data);
-      });**/
-      
-      setPopup(!popup)
-    
+         setPopup(!popup)
    }
-  
+   const preter = () => {
+    setPopup(!popup)
+    setPret(true)
+}
+
   
   const closePopup = () => {
     setPopup(false)
@@ -65,12 +63,14 @@ useEffect(()=>{
 useEffect(()=>{
   if((rfid !=="" )&&(popup==false)){
     setRfidBook(rfid);
+    console.log(rfidBook);
     axios.post("http://localhost:8090/bookRFID",{
         rfid: rfid
     }).then(response => {
       console.log(response.data)
       setNomBook(response.data);
       });
+      if(pret==false){
       axios.post("http://localhost:8093/pret",{
         rfidReader:rfidUser,
         rfidBook:rfidBook,
@@ -80,9 +80,13 @@ useEffect(()=>{
         
       })
       setFinalPopup(!finalpopup);
-   
+    }
+    else{
+      alert("remettre")
+    }
       //   setPopup(false);
-  }
+  
+}
 },[rfid]);
     //const toggleNextPopup = () => {
         //setNextPopup(!nextpopup);
@@ -96,16 +100,18 @@ useEffect(()=>{
       setRfid("");
     
   }
+    //============================Remettre un livre================================================
+
   
     return(
 <div className="conent">
 <img src="./pret.png" id='pret-id' alt=""  />
 <div className="ch">
     
-<span onClick={togglePopup} className="choix" id="ch1">
+<span onClick={togglePopup} className="choix" id="ch1"  data-testid="addCount">
     <h2>Preter un livre</h2>
 </span>
-<span className="choix" id="ch2">
+<span onClick={preter} className="choix" id="ch2">
     <h2>Remettre un livre</h2>
 </span>
 <span className="choix" id="ch3">

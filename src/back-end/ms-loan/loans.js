@@ -32,6 +32,15 @@ app.post("/pret", async (req, res) => {
 		}
 	})
 });
+app.delete("/return", async (req, res) => {
+ var rfid=req.body.rfid
+	Loan.find({rfidReader:rfid}).then(() => {
+		console.log("reader found ")
+		res.send("User deleted with success...")
+	}).catch( () => {
+		res.sendStatus(404)
+	})
+})
 
 
 app.listen(8093,()=>{
