@@ -45,17 +45,18 @@ app.get('/books',(req,res)=>{
 })
 
 // *********GET BOOK BY ID *********
-app.get('/books/:id',(req,res)=>{
+/**app.get('/books/:id',(req,res)=>{
     Book.findById(req.params.id).then((book)=>{
          res.json(book)
     }
     )
-})
+})**/
 
 // *********GET BOOK BY TITLE *********
-app.get('/books/:title',(req,res)=>{
-    Book.find({title:req.params.title}).then((book)=>{
-        res.json(book)
+app.get('/books/:uid',(req,res)=>{
+    var uid=req.params.uid
+    Book.findOne({title:uid}).then((book)=>{
+        res.send(book)
    
     })
 
@@ -76,7 +77,7 @@ app.post('/addBook',upload.single('image'),async(req,res)=>{
         language:req.body.language,
         pages:req.body.pages,
         category: req.body.category,
-        image: req.file.buffer.toString('base64')
+       image: req.file.buffer.toString('base64')
      //quantity: req.body.quantity,
     }
     console.log(req.body)

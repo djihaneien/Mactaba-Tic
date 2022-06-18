@@ -1,8 +1,8 @@
 import React from 'react'
-import "./leschamps.css"
+import "./AfficherOuvrage.css"
 import { useState } from "react";
 import Axios from "axios";
-import { Link,useNavigate } from "react-router-dom";
+import { Link,useNavigate, useParams } from "react-router-dom";
 import io from 'socket.io-client';
 
 /*const imageUpload=(event)=>{
@@ -25,7 +25,10 @@ const Leschamps=()=> {
    const [popupp,setPopupp]= useState(false);
    const [rfid, setRfid] = useState("");
    const [id, setId] = useState("");
+   const [bookList, setbookList] = useState([]);
+
    const [error, setError] = useState("");
+  
    React.useEffect(()=>{
     const socket = io('http://localhost:8001')
    socket.on('data',function(data) {
@@ -39,7 +42,7 @@ const Leschamps=()=> {
   
 
  const navigate = useNavigate();
-   const AddBook= async(e) => {
+ /**   const AddBook= async(e) => {
        e.preventDefault();
       
        setPopup(!popup)
@@ -71,7 +74,7 @@ alert('book added')
       })
       
       
-    }
+    }*/
     
     const AddExemp=()=>{
     
@@ -83,8 +86,15 @@ alert('book added')
         })
   
    }
+let {titre }=useParams();
 
- 
+  
+   Axios.get(`http://localhost:8090/books/${titre}`).then((response) => {
+    setbookList(response.data);
+    console.log(response.data)
+  });
+
+
   return (
     <div className="leschamps">
     
@@ -137,7 +147,7 @@ alert('book added')
            </select>
         </div> 
         <div className="secondline">
-           <label>Auteur</label>
+           <label>Auteur{titre}</label>
            <input placeholder="auteur " type="text" id="input"  onChange={(event) => {
             setAuthor(event.target.value);
           }}></input>
@@ -175,7 +185,7 @@ alert('book added')
           }} />
         </div>
         
-        <button  id="sub_butt" onClick={AddBook} encType="multipart/form-data">Ajouter un ouvrages</button>
+        <button  id="sub_butt" encType="multipart/form-data">Ajouter un ouvrages</button>
         
     </div>
     

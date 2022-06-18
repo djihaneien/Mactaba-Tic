@@ -43,25 +43,20 @@ const Leschamps=()=> {
        e.preventDefault();
       
        setPopup(!popup)
-       
         const formData = new FormData()
-        formData.append('image',image)
         formData.append('isbn10',isbn10)  
+        formData.append('isbn13',isbn13) 
         formData.append('title',title) 
-         Axios.post("http://localhost:8090/addBook",formData/*{
-        
-          isbn10:isbn10,
-          isbn13: isbn13,
-          title: title,
-          subtitle:subtitle, 
-          description:description, 
-          publisher: publisher,
-          publishedDate: publishedDate,
-          author: author,
-          language:language,
-          pages:pages,
-          category:category, 
-        }*/ ).then(() => {
+        formData.append('subtitle',subtitle) 
+        formData.append('description',description) 
+        formData.append('publisher',publisher)
+        formData.append('publishedDate',publishedDate)
+        formData.append('author',author) 
+        formData.append('language',language)
+        formData.append('pages',pages)
+        formData.append('image',image)
+        formData.append('category',category)       
+         Axios.post("http://localhost:8090/addBook",formData ).then(() => {
           Axios.post("http://localhost:8090/idbook",  {
         isbn10:isbn10
       }).then((res)=>{

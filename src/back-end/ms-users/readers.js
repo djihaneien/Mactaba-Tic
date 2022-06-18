@@ -159,6 +159,7 @@ app.delete("/readers/:uid", async (req, res) => {
 
 //update 
 app.put("/readers/:uid", async (req, res) => {
+	
 	Reader.update({Nom :req.params.uid}).then(() => {
 		console.log("reader found ")
 		res.send("User deleted with success...")
