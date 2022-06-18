@@ -86,13 +86,17 @@ alert('book added')
         })
   
    }
-let {titre }=useParams();
-
+let {titre} =useParams();
   
    Axios.get(`http://localhost:8090/books/${titre}`).then((response) => {
     setbookList(response.data);
     console.log(response.data)
   });
+  return(
+    
+
+    <div>
+    {bookList.map(function(val, key)  {
 
 
   return (
@@ -125,7 +129,7 @@ let {titre }=useParams();
 </div> )}
         <div className="firstline">
            <label>ISBN10</label>
-           <input placeholder="ISBN here " type="text" id="input"  onChange={(event) => {
+           <input placeholder="ISBN here " type="text"value={val.isbn10} id="input"  onChange={(event) => {
             setIsbn10(event.target.value);
           }}></input>
            <label>ISBN13</label>
@@ -188,7 +192,9 @@ let {titre }=useParams();
         <button  id="sub_butt" encType="multipart/form-data">Ajouter un ouvrages</button>
         
     </div>
-    
+  )
+    })}
+    </div>
   )
 }
 export default  Leschamps;

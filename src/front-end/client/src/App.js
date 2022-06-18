@@ -37,7 +37,7 @@ class App extends Component {
       <Route path="/Ouvrages" element={<Ouvrages/>}/>;
       <Route path="/Addouvrages" element={<Addouvrages/>}/>;
       <Route path="/pret" element={<Pret/>}/>;
-      <Route name="Afficher"path="/AfficherOuvrage/:param1" element={<AfficherOuvrage/>}/>;
+      <Route name="Afficher"path="/AfficherOuvrage/:titre" element={<AfficherOuvrage/>}/>;
       </Routes>
     
       
