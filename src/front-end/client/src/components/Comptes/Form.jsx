@@ -1,5 +1,9 @@
 import React from 'react';
 import './Form.css';
+import Sidebar from '../Addouvrage/sidebar/Sidebar';
+import  '../Addouvrage/sidebar/sidebar.css';
+import Topbar from '../Addouvrage/topbar/Topbar';
+import '../Addouvrage/topbar/topbar.css';
 import { useState,useEffect } from "react";
 import { Link,useNavigate } from "react-router-dom";
 import Axios from "axios";
@@ -14,6 +18,7 @@ const Register=() =>{
     const [date, setDate] = useState("");
     const [niveau, setNiveau] = useState("");
     const [rfid, setRfid] = useState("");
+    const [userList, setUserList] = useState([]);
     const navigate = useNavigate();
 
     useEffect(() => {
@@ -54,11 +59,44 @@ const Register=() =>{
         }).then(() => {
       
           alert("user created")
+          setUserList([...userList,{
+              Nom: nom,
+             Prenom: prenom,
+             email: email,
+             password: Password,
+             birthday: date,
+             Niveau: niveau,
+              Rfid:rfid
+            },
+          ]);
           
         })
     }
 
+    Axios.get("http://localhost:8092/readers").then((response) => {
+      setUserList(response.data);
+     
+      console.log(userList)
+    });
+
+    const deleteUser = (uid) => {
+      Axios.delete(`http://localhost:8092/readers/delete/${uid}`).then((response) => {
+        setUserList(
+          userList.filter((val) => {
+            return val.id != uid;
+          })
+        );
+      });
+    };
+
         return(
+          <div>
+               <Topbar/>
+              <div className='container'>
+              <Sidebar />
+              <div className='grid-container'>
+            <h2>Veuillez remplir le formulaire:</h2>
+
             <div className='Form'>
                
                 <form >
@@ -102,7 +140,71 @@ const Register=() =>{
                 <button  id="sub_butt" onClick={AddReader}>Ajouter</button>
                 </form>
                 </div>
-            
+                
+                <div className="Right">
+            <hr></hr>
+            <h2>Table des Lecteurs:</h2>
+            <div className="search1">
+        
+        <div class="p-1 bg-light rounded rounded-pill shadow-sm mb-4">
+          <div class="input-group">
+            <input 
+             type="search" 
+             placeholder="what are you searching for?"
+             aria-describedby="button-addon1" 
+             class="form-control border-0 bg-light"
+             />
+               <div class="input-group-append">
+                <button id="button-addon1" type="submit" class="btn btn-link text-primary">
+                  <i class="fa fa-search"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <table>
+            <thead>
+                <tr className="ligne">
+                    <th>Nom</th>
+                    <th>Prenom</th>
+                    
+                    <th>Email</th>
+                    <th>Niveau</th>
+                    <th>Date de naissance</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+            {userList.map(function(val, key)  {
+           return (
+                <tr className="ligne">
+                    <td>{val.Nom}</td>
+                    <td>{val.Prenom}</td>
+                    <td>{val.Niveau}</td>
+                    <td>{val.email}</td>
+                    <td>{val.birthday}</td>
+                                    
+          
+                    <td> 
+                      <td><button id="button-addon1" type="submit" class="btn btn-link text-primary">
+                  <i class="fa fa-edit"></i>
+                </button></td>
+                 <td><button id="button-addon1" type="submit" class="btn btn-link text-primary" onClick={() => {
+                    deleteUser(val.id);
+                  }}>
+                  <i class="fa fa-trash"></i>
+                </button></td>
+                 </td>
+                </tr>
+                )
+              })}
+            </tbody>
+        </table>
+        </div>
+                
+                </div>
+                </div>
+            </div> 
         )
     
 }

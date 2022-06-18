@@ -148,10 +148,10 @@ app.post("/connect",async (req, res) => {
 	});
 
 // Delete reader by name 
-app.delete("/readers/:uid", async (req, res) => {
-	Reader.find({Nom :req.params.uid}).then(() => {
+app.delete("/readers/delete/:uid", async (req, res) => {
+	Reader.findByIdAndRemove(req.params.uid).then((reader) => {
 		console.log("reader found ")
-		res.send("User deleted with success...")
+		res.send("reader")
 	}).catch( () => {
 		res.sendStatus(404)
 	})

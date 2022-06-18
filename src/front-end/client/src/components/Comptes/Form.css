@@ -1,15 +1,45 @@
+.body {
+  margin: 0;
+  padding: 0;
+}.grid-container{
+  display: grid;
+  margin-left: 10rem;
+  position: relative;
+  
+}
+.container{
+  display:flex;
+  margin: 0;
+  padding: 0;
+ 
+}
+
+.column {
+  float: left;
+  
+}
+.leschamps{
+  display:block;
+}
+.leschamps>div{
+  margin-top: 50px;
+}
 .Form{
-    margin-top: 5rem;
+   margin-top: 0rem;
+ 
    
     
 }
+.firstline,.secondline{
+  display:flex;
+}
 .Form input {
-    display:block;
+   
    border-width: thin;
    border-color: lightsteelblue;
     height: 2rem;
-    width: 40%;
-    margin: auto;
+    width: 20%;
+    margin-right: 0rem;
     margin-bottom: 1rem;
     padding: 0.2rem 1rem;
     font-size: small;
@@ -21,7 +51,7 @@
     display: block;
     border: none;
     height: 2rem;
-    width: 40%;
+    width:22%;
     margin: auto;
     margin-bottom: 1rem;
     padding: 0.2rem 1rem;
@@ -51,9 +81,9 @@
   
   .Form label {
     display:block;
-    text-align: left;
-    width: 78%;
-    margin-left: 22rem;
+    text-align: center;
+    width: 15%;
+    margin-left: 0.1rem;
     font-size: small;
     color: gray;
     margin-bottom: 0.5rem;
@@ -68,8 +98,9 @@
     padding: 0.5rem 1rem;
     -webkit-transition: all 0.2s ease;
     transition: all 0.2s ease;
-    margin-left: 35rem;
+    margin-left: 20rem;
     margin-top: 1rem;
+    border-radius: 10px;
   }
   
   .Form #sub_butt:hover {
@@ -78,4 +109,68 @@
     -webkit-transform: translateY(-5px);
             transform: translateY(-5px);
   }
+ h2{
+  color: gray;
+  margin-top: 4rem;
+  text-decoration: underline;
+  font-size:smaller;
+  
+ }
+
+
+ /* tableau*/
+
+ table {
+  margin-top: 4rem;
  
+    border-collapse: collapse;
+    width:auto;
+   
+  }
+  
+  th{
+   
+    text-align: center;
+    padding: 8px;
+    font-size: 18px;
+    color: white;
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    
+  
+    
+  }
+  td {
+   
+    text-align: left;
+    padding: 8px;
+    font-size: 15px;
+    color: gray;
+   
+    border-bottom: 1px solid #ddd;
+   
+  }
+  
+  th {
+    background-color: #00B4D8;
+  }
+  
+  td:hover {
+    background-color: rgb(205, 235, 253);
+  }
+  td{
+    background-color: rgb(252, 247, 247);
+  }
+ hr{
+  color: #00B4D8;
+ }
+ .search1{
+  margin-top: 1rem;
+margin-left: 34rem;
+width: 35%;
+ }
+ h2{
+  color: gray;
+  font-size: smaller;
+  text-decoration: underline;
+  
+ }
